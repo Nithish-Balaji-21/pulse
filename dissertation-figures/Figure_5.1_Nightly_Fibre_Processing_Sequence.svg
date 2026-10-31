@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;font-size:11.5px;fill:#000}
+.hd{fill:#f0f0f0;stroke:#000;stroke-width:1.2}
+.ll{stroke:#000;stroke-width:1;stroke-dasharray:5,4}
+.m{stroke:#000;stroke-width:1.1;fill:none}
+.r{stroke:#000;stroke-width:1.1;fill:none;stroke-dasharray:6,4}
+.frm{fill:none;stroke:#000;stroke-width:1.1}
+.b{font-weight:bold}
+.s{font-size:10.5px}
+</style>
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z"/></marker>
+<marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#000"/></marker>
+</defs>
+<rect x="10" y="10" width="120" height="40" class="hd"/><text x="70" y="28" text-anchor="middle" class="b">Scheduler</text><text x="70" y="42" text-anchor="middle" class="s">cron, daily slot</text>
+<rect x="150" y="10" width="130" height="40" class="hd"/><text x="215" y="28" text-anchor="middle" class="b">devicedata:fibre</text><text x="215" y="42" text-anchor="middle" class="s">console command</text>
+<rect x="300" y="10" width="140" height="40" class="hd"/><text x="370" y="28" text-anchor="middle" class="b">Fibre job</text><text x="370" y="42" text-anchor="middle" class="s">Horizon worker</text>
+<rect x="460" y="10" width="120" height="40" class="hd"/><text x="520" y="34" text-anchor="middle" class="b">CounterSeed</text>
+<rect x="600" y="10" width="140" height="40" class="hd"/><text x="670" y="34" text-anchor="middle" class="b">ProductionCounter</text>
+<rect x="760" y="10" width="130" height="40" class="hd"/><text x="825" y="34" text-anchor="middle" class="b">MySQL</text>
+<line x1="70" y1="50" x2="70" y2="505" class="ll"/><line x1="215" y1="50" x2="215" y2="505" class="ll"/><line x1="370" y1="50" x2="370" y2="505" class="ll"/><line x1="520" y1="50" x2="520" y2="505" class="ll"/><line x1="670" y1="50" x2="670" y2="505" class="ll"/><line x1="825" y1="50" x2="825" y2="505" class="ll"/>
+
+<line x1="70" y1="80" x2="215" y2="80" class="m" marker-end="url(#a)"/><text x="78" y="74">1: run</text>
+<rect x="150" y="96" width="740" height="94" class="frm"/><path d="M150,96 L205,96 L205,108 L197,116 L150,116 Z" fill="#fff" stroke="#000"/><text x="156" y="111" class="b">loop</text><text x="212" y="111" class="s">[each factory with fibre devices]</text>
+<line x1="215" y1="135" x2="370" y2="135" class="m" marker-end="url(#a)"/><text x="222" y="129" class="s">2: dispatch job (staggered)</text>
+<line x1="215" y1="165" x2="825" y2="165" class="m" marker-end="url(#a)"/><text x="400" y="159" class="s">3: record dispatch in job-run ledger</text>
+
+<line x1="370" y1="220" x2="825" y2="220" class="m" marker-end="url(#a)"/><text x="378" y="214" class="s">4: readings for the shift day, is_duplicate = 0, ordered by time</text>
+<line x1="825" y1="245" x2="370" y2="245" class="r" marker-end="url(#o)"/><text x="600" y="240" class="s">rows</text>
+<line x1="370" y1="275" x2="520" y2="275" class="m" marker-end="url(#a)"/><text x="378" y="269" class="s">5: before(day start)</text>
+<line x1="520" y1="295" x2="825" y2="295" class="m" marker-end="url(#a)"/><text x="528" y="289" class="s">6: last reading before day start</text>
+<path d="M520,312 l30,0 l0,16 l-28,0" class="m" marker-end="url(#a)"/><text x="556" y="324" class="s">7: carriesFrom(): within one shift day?</text>
+<line x1="520" y1="350" x2="370" y2="350" class="r" marker-end="url(#o)"/><text x="378" y="345" class="s">8: seed, or none (outage logged)</text>
+<line x1="370" y1="380" x2="670" y2="380" class="m" marker-end="url(#a)"/><text x="378" y="374" class="s">9: bucketed(readings, seed) for bales and energy</text>
+<line x1="670" y1="405" x2="370" y2="405" class="r" marker-end="url(#o)"/><text x="470" y="400" class="s">totals per shift</text>
+<line x1="370" y1="440" x2="825" y2="440" class="m" marker-end="url(#a)"/><text x="378" y="434" class="s">10: upsert pulse_summary_fibre_mega_bales</text>
+<line x1="370" y1="475" x2="825" y2="475" class="m" marker-end="url(#a)"/><text x="378" y="469" class="s">11: close job-run ledger entry (success)</text>
+</svg>

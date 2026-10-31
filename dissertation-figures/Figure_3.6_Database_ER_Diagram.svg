@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 735" width="960" height="735">
+<style>text{font-family:Arial,Helvetica,sans-serif;font-size:10.5px;fill:#000}.h{font-weight:bold;font-size:10.5px}.k{font-weight:bold;font-size:9px}.l{stroke:#000;stroke-width:1;fill:none}.c{font-size:10px;font-weight:bold}</style>
+<path d="M250,40 L220,155" class="l"/>
+<text x="240" y="36" class="c">1</text>
+<text x="224" y="151" class="c">N</text>
+<path d="M115,96 L115,125" class="l"/>
+<text x="120" y="108" class="c">1</text>
+<text x="120" y="121" class="c">N</text>
+<path d="M250,54 L220,270" class="l"/>
+<text x="240" y="50" class="c">1</text>
+<text x="224" y="266" class="c">N</text>
+<path d="M250,68 L220,385" class="l"/>
+<text x="240" y="64" class="c">1</text>
+<text x="224" y="381" class="c">N</text>
+<path d="M115,441 L115,470" class="l"/>
+<text x="120" y="453" class="c">1</text>
+<text x="120" y="466" class="c">N</text>
+<path d="M355,81 L355,110" class="l"/>
+<text x="360" y="93" class="c">1</text>
+<text x="360" y="106" class="c">N</text>
+<path d="M355,341 L355,370" class="l"/>
+<text x="360" y="353" class="c">1</text>
+<text x="360" y="366" class="c">N</text>
+<path d="M460,40 L495,40" class="l"/>
+<text x="464" y="36" class="c">1</text>
+<text x="485" y="36" class="c">N</text>
+<path d="M600,96 L600,125" class="l"/>
+<text x="605" y="108" class="c">1</text>
+<text x="605" y="121" class="c">N</text>
+<path d="M600,241 L600,420" class="l"/>
+<text x="606" y="370.5" style="font-style:italic;font-size:9.5px">derived nightly</text>
+<path d="M845,96 L845,125" class="l"/>
+<text x="850" y="108" class="c">1</text>
+<text x="850" y="121" class="c">N</text>
+<path d="M845,226 L845,260" class="l"/>
+<text x="850" y="238" class="c">1</text>
+<text x="850" y="256" class="c">N</text>
+<path d="M845,376 L845,410" class="l"/>
+<text x="851" y="397" style="font-style:italic;font-size:9.5px">closes a batch</text>
+<path d="M460,400 L740,290" class="l"/>
+<text x="464" y="396" class="c">1</text>
+<text x="730" y="286" class="c">N</text>
+<path d="M355,516 L355,565" class="l" stroke-dasharray="5,4"/>
+<text x="361" y="544.5" style="font-style:italic;font-size:9.5px">trigger, by team and date</text>
+<rect x="10" y="10" width="210" height="86" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="10" y="10" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="115" y="25" text-anchor="middle" class="h">users</text>
+<text x="16" y="45" class="k">PK</text><text x="38" y="45">id</text>
+<text x="38" y="60">name</text>
+<text x="38" y="75">email</text>
+<text x="38" y="90">current_team_id</text>
+<rect x="10" y="125" width="210" height="86" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="10" y="125" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="115" y="140" text-anchor="middle" class="h">team_user</text>
+<text x="16" y="160" class="k">PK</text><text x="38" y="160">id</text>
+<text x="16" y="175" class="k">FK</text><text x="38" y="175">team_id</text>
+<text x="16" y="190" class="k">FK</text><text x="38" y="190">user_id</text>
+<text x="38" y="205">role</text>
+<rect x="10" y="240" width="210" height="86" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="10" y="240" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="115" y="255" text-anchor="middle" class="h">pulse_team_roles</text>
+<text x="16" y="275" class="k">PK</text><text x="38" y="275">id</text>
+<text x="16" y="290" class="k">FK</text><text x="38" y="290">team_id</text>
+<text x="38" y="305">key</text>
+<text x="38" y="320">permissions (json)</text>
+<rect x="10" y="355" width="210" height="86" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="10" y="355" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="115" y="370" text-anchor="middle" class="h">staffs</text>
+<text x="16" y="390" class="k">PK</text><text x="38" y="390">id</text>
+<text x="16" y="405" class="k">FK</text><text x="38" y="405">team_id</text>
+<text x="38" y="420">staff_name</text>
+<text x="38" y="435">salary_per_hr</text>
+<rect x="10" y="470" width="210" height="116" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="10" y="470" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="115" y="485" text-anchor="middle" class="h">pulse_attendance</text>
+<text x="16" y="505" class="k">PK</text><text x="38" y="505">id</text>
+<text x="16" y="520" class="k">FK</text><text x="38" y="520">team_id</text>
+<text x="16" y="535" class="k">FK</text><text x="38" y="535">staff_id</text>
+<text x="38" y="550">date</text>
+<text x="38" y="565">duration</text>
+<text x="38" y="580">salary</text>
+<rect x="250" y="10" width="210" height="71" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="250" y="10" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="355" y="25" text-anchor="middle" class="h">teams</text>
+<text x="256" y="45" class="k">PK</text><text x="278" y="45">id</text>
+<text x="278" y="60">name</text>
+<text x="278" y="75">products (json)</text>
+<rect x="250" y="110" width="210" height="101" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="250" y="110" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="355" y="125" text-anchor="middle" class="h">pulse_settings</text>
+<text x="256" y="145" class="k">PK</text><text x="278" y="145">id</text>
+<text x="256" y="160" class="k">FK</text><text x="278" y="160">team_id</text>
+<text x="278" y="175">module</text>
+<text x="278" y="190">key</text>
+<text x="278" y="205">value</text>
+<rect x="250" y="240" width="210" height="101" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="250" y="240" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="355" y="255" text-anchor="middle" class="h">pulse_shifts</text>
+<text x="256" y="275" class="k">PK</text><text x="278" y="275">id</text>
+<text x="256" y="290" class="k">FK</text><text x="278" y="290">team_id</text>
+<text x="278" y="305">name</text>
+<text x="278" y="320">start_time</text>
+<text x="278" y="335">end_time</text>
+<rect x="250" y="370" width="210" height="146" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="250" y="370" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="355" y="385" text-anchor="middle" class="h">pulse_summary_pith_productions</text>
+<text x="256" y="405" class="k">PK</text><text x="278" y="405">id</text>
+<text x="256" y="420" class="k">FK</text><text x="278" y="420">team_id</text>
+<text x="256" y="435" class="k">FK</text><text x="278" y="435">shift_id</text>
+<text x="278" y="450">shift_date</text>
+<text x="278" y="465">cft_expected</text>
+<text x="278" y="480">cft_produced</text>
+<text x="278" y="495">eb_units, eb_price</text>
+<text x="256" y="510" style="font-style:italic;font-size:9.5px">UNIQUE(team_id, shift_date, shift_id)</text>
+<rect x="250" y="565" width="210" height="161" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="250" y="565" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="355" y="580" text-anchor="middle" class="h">pulse_husks_daily_stock</text>
+<text x="256" y="600" class="k">PK</text><text x="278" y="600">id</text>
+<text x="256" y="615" class="k">FK</text><text x="278" y="615">team_id</text>
+<text x="278" y="630">date</text>
+<text x="278" y="645">opening_stock</text>
+<text x="278" y="660">husks_received</text>
+<text x="278" y="675">husks_correction</text>
+<text x="278" y="690">cft</text>
+<text x="278" y="705">closing_stock</text>
+<text x="256" y="720" style="font-style:italic;font-size:9.5px">UNIQUE(team_id, date)</text>
+<rect x="495" y="10" width="210" height="86" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="495" y="10" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="600" y="25" text-anchor="middle" class="h">pulse_devices</text>
+<text x="501" y="45" class="k">PK</text><text x="523" y="45">device_id</text>
+<text x="501" y="60" class="k">FK</text><text x="523" y="60">team_id</text>
+<text x="523" y="75">module</text>
+<text x="523" y="90">off_th, idle_th, efficient_th</text>
+<rect x="495" y="125" width="210" height="116" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="495" y="125" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="600" y="140" text-anchor="middle" class="h">pulse_device_data</text>
+<text x="501" y="160" class="k">PK</text><text x="523" y="160">id</text>
+<text x="501" y="175" class="k">FK</text><text x="523" y="175">device_id</text>
+<text x="523" y="190">datetime</text>
+<text x="523" y="205">d4, d5, d6 (phase voltages)</text>
+<text x="523" y="220">d7 (line current)</text>
+<text x="523" y="235">d15 (energy meter)</text>
+<rect x="495" y="420" width="210" height="116" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="495" y="420" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="600" y="435" text-anchor="middle" class="h">pulse_summary_power_states</text>
+<text x="501" y="455" class="k">PK</text><text x="523" y="455">id</text>
+<text x="501" y="470" class="k">FK</text><text x="523" y="470">team_id</text>
+<text x="501" y="485" class="k">FK</text><text x="523" y="485">device_id</text>
+<text x="523" y="500">shift_date</text>
+<text x="523" y="515">state</text>
+<text x="523" y="530">duration, eb_units</text>
+<rect x="740" y="10" width="210" height="86" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="740" y="10" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="845" y="25" text-anchor="middle" class="h">pulse_pith_location_groups</text>
+<text x="746" y="45" class="k">PK</text><text x="768" y="45">id</text>
+<text x="746" y="60" class="k">FK</text><text x="768" y="60">team_id</text>
+<text x="768" y="75">name</text>
+<text x="768" y="90">is_active</text>
+<rect x="740" y="125" width="210" height="101" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="740" y="125" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="845" y="140" text-anchor="middle" class="h">pulse_pith_locations</text>
+<text x="746" y="160" class="k">PK</text><text x="768" y="160">id</text>
+<text x="746" y="175" class="k">FK</text><text x="768" y="175">team_id</text>
+<text x="746" y="190" class="k">FK</text><text x="768" y="190">group_id</text>
+<text x="768" y="205">name</text>
+<text x="768" y="220">is_active</text>
+<rect x="740" y="260" width="210" height="116" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="740" y="260" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="845" y="275" text-anchor="middle" class="h">pulse_pith_inventory</text>
+<text x="746" y="295" class="k">PK</text><text x="768" y="295">id</text>
+<text x="746" y="310" class="k">FK</text><text x="768" y="310">pith_location_id</text>
+<text x="746" y="325" class="k">FK</text><text x="768" y="325">pith_production_id</text>
+<text x="768" y="340">date</text>
+<text x="768" y="355">cft_offloaded</text>
+<text x="768" y="370">taken_cft_calculated</text>
+<rect x="740" y="410" width="210" height="101" fill="#fff" stroke="#000" stroke-width="1.2"/><rect x="740" y="410" width="210" height="22" fill="#e6e6e6" stroke="#000" stroke-width="1.2"/><text x="845" y="425" text-anchor="middle" class="h">pulse_pith_stock_depletions</text>
+<text x="746" y="445" class="k">PK</text><text x="768" y="445">id</text>
+<text x="746" y="460" class="k">FK</text><text x="768" y="460">pith_location_id</text>
+<text x="768" y="475">depletion_date</text>
+<text x="768" y="490">total_cft_offloaded</text>
+<text x="768" y="505">total_cft_taken_calculated</text>
+<text x="495" y="560" style="font-size:10px">Notation: 1 / N = one-to-many. PK primary key, FK foreign key.</text>
+<text x="495" y="576" style="font-size:10px">Every pulse_* table carries team_id referencing teams.id;</text>
+<text x="495" y="591" style="font-size:10px">only the main team_id links are drawn to keep the diagram legible.</text>
+<text x="495" y="606" style="font-size:10px">Dashed link: no foreign key; the husk ledger is kept in step with</text>
+<text x="495" y="621" style="font-size:10px">pith production by database triggers (Section 5.1, Step 4).</text>
+</svg>

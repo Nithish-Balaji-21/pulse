@@ -1,0 +1,158 @@
+/*
+ * Dashboard period selector (resources/views/Pulse/dashboard/date-range-selector.blade.php).
+ *
+ * Kept as plain CSS rather than Tailwind utilities because the active pill is
+ * toggled from daterangeselector.js — classes that only ever appear in a .js
+ * file are not seen by the Tailwind scanner and would be dropped from the
+ * production build (public/css/output.css).
+ *
+ * --pulse-range-active is set inline on .pulse-range-bar from the module's
+ * brand colour, so the same markup can serve pith/fibre/growbags.
+ */
+
+/*
+ * Sized by its content, not by the page: stretching the bar full-width left a
+ * dead gap between the range and the pills. It sits inline beside the page
+ * title instead, and only goes full-width once it is on a row of its own.
+ */
+.pulse-range-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border: 1px solid #ececec;
+    border-radius: 14px;
+    padding: 6px 8px 6px 10px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+/* --- Left: calendar icon + resolved range --- */
+
+.pulse-range-trigger {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 10px 4px 4px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+}
+
+.pulse-range-trigger:hover {
+    background-color: #f6f4f2;
+}
+
+.pulse-range-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    color: var(--pulse-range-active, #83211b);
+}
+
+.pulse-range-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.pulse-range-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+/* --- Right: preset pills on a shared track --- */
+
+.pulse-range-presets {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    max-width: 100%;
+    padding: 4px;
+    border-radius: 9999px;
+    background-color: #f1efee;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.pulse-range-presets::-webkit-scrollbar {
+    display: none;
+}
+
+.pulse-range-preset {
+    padding: 7px 18px;
+    border: 0;
+    border-radius: 9999px;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #6b6663;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.pulse-range-preset:hover {
+    color: #1f2937;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.pulse-range-preset.is-active,
+.pulse-range-preset.is-active:hover {
+    background-color: var(--pulse-range-active, #83211b);
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.15);
+}
+
+/*
+ * Laptop widths (1366×768 is the floor we design for): tighten the pills and the
+ * label so the bar still shares a row with the page title instead of wrapping
+ * below it. Measured against the widest bar — the fibre/growbag preset set.
+ */
+@media (max-width: 1500px) {
+    .pulse-range-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .pulse-range-label {
+        font-size: 14px;
+    }
+
+    .pulse-range-preset {
+        padding: 7px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 900px) {
+    .pulse-range-bar {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .pulse-range-presets {
+        flex: 1 1 auto;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 640px) {
+    .pulse-range-presets {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .pulse-range-preset {
+        padding: 7px 14px;
+    }
+}

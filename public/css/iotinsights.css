@@ -1,0 +1,505 @@
+.ec-header{
+    background-color: #f8f8f8;
+    color: black;
+    text-transform: uppercase;
+    position: sticky;
+    top: 123px;
+    z-index: 40;
+    font-size: 0.75rem;
+    padding: 6px 0;
+}
+.chart-container {
+    min-height: 200px;
+}
+.apexcharts-gridlines-horizontal {
+    display: none;
+}
+.apexcharts-annotation-rect, .apexcharts-area-series .apexcharts-area, .apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events, .apexcharts-gridline, .apexcharts-line, .apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events, .apexcharts-point-annotation-label, .apexcharts-radar-series path:not(.apexcharts-marker), .apexcharts-radar-series polygon, .apexcharts-toolbar svg, .apexcharts-tooltip .apexcharts-marker, .apexcharts-xaxis-annotation-label, .apexcharts-yaxis-annotation-label, .apexcharts-zoom-rect {
+    display: none;
+}
+.apexcharts-canvas {
+    width: 100% !important;
+}
+audio, canvas, embed, iframe, img, object, svg, video {
+    display: block;
+    
+/* width: 100%; */
+}
+foreignObject {
+    width: 100%;
+}
+line {
+    display: none;
+}
+/* button Style */
+.daterangepicker {
+    font-family: system-ui;
+}
+.daterangepicker th{
+    font-family: system-ui;
+    font-weight: 600;
+}
+.ec-toolbar {
+    position: sticky;
+    top: 50px;
+    background: white;
+    z-index: 40;
+    padding: 10px 0px 10px 0px;
+    margin-bottom: 0 !important;
+}
+.ec-button.ec-next, .ec-button.ec-datePickerTitle, .ec-button.ec-prev,
+.ec-button.ec-mins1, .ec-button.ec-mins2, .ec-button.ec-mins5, .ec-button.ec-mins10,
+.ec-button.ec-mins15, .ec-button.ec-mins30, .ec-button.ec-hr1, .ec-button.ec-hr2 {
+    padding: 5px 10px 5px 10px !important;
+    transition: all 0.2s ease;
+}
+.ec-button:hover {
+    background-color: #f3f4f6 !important;
+}
+.ec-event {
+    box-shadow: 0 0 0 0 !important;
+    transition: all 0.2s ease;
+}
+.ec-event:hover {
+    opacity: 0.9;
+}
+.ec-all-day .ec-days .ec-day .ec-events {
+    padding: 0px 6px 0px 6px !important;
+}
+.ec-all-day .ec-bg-events {
+    background-color: #f5f3f2;
+}
+.ec-all-day .ec-days {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+.ec-header .ec-days {
+    border-bottom: none;
+}
+.ec-with-scroll .ec-hidden-scroll {
+    display: none !important;
+}
+.ec-body {
+    overflow-y: hidden !important;
+}
+.ec-time-grid .ec-lines {
+    width: 0 !important;
+}
+.ec-all-day {
+    background-color: #f5f3f2;
+    position: sticky;
+    top: 165px;
+    z-index: 30;
+    transition: all 0.3s ease-in-out;
+    overflow: visible;
+    max-height: none;
+}
+.ec-all-day .ec-events,
+.ec-day-grid .ec-events {
+    margin: 0px;
+    padding: 0 4px;
+}
+.ec-all-day .ec-day {
+    padding-bottom: 0px !important;
+    height: 100%;
+    place-content: center;
+}
+.ec-all-day-custom-1,
+.ec-all-day-custom-2,
+.ec-all-day-custom-3,
+.ec-all-day-custom-total {
+    background-color: #f5f3f2 !important;
+    color: black !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+.ec-all-day-custom-total {
+    font-weight: 600;
+    border-top-width: 1px;
+    border-color: #9ca3af;
+    margin-bottom: 12px !important;
+}
+.ec-all-day-custom-1 .ec-event-body .all-day-event .all-day-event-title span .relative {
+    background-color: #83211B !important;
+}
+.ec-all-day-custom-2 .ec-event-body .all-day-event .all-day-event-title span .relative {
+    background-color: #CE7716 !important;
+}
+.ec-all-day-custom-3 .ec-event-body .all-day-event .all-day-event-title span .relative {
+    background-color: #D20062 !important;
+}
+.ec-all-day-custom-total .ec-event-body .all-day-event .all-day-event-title span .relative {
+    background-color: #DE817C !important;
+}
+.ec-event-body {
+    place-content: center;
+}
+.all-day-event {
+    width: 100%;
+}
+.all-day-event-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+/* Time gutter and the all-day row label read as chart axis text.
+
+   The day-name, all-day and timeline rows are separate flex containers, and
+   each sizes its own gutter from the hidden time labels it carries — the
+   day-name row uppercases them, so left to itself its gutter comes out wider
+   and every column border sits off the ones below. Pinning the gutter makes
+   the three agree; the labels are right-aligned inside it. min-width: 0 stops
+   a label's min-content width from winning over the pinned basis. */
+.ec-sidebar {
+    flex: 0 0 4rem;
+    min-width: 0;
+    font-size: 12px;
+    color: #6b7280;
+    font-variant-numeric: tabular-nums;
+}
+.ec-sidebar .ec-time:first-of-type {
+    margin-top: 8px;
+}
+.ec-all-day-total {
+    background-color: #f5f3f2 !important;
+    color: black !important;
+    padding: 0px !important;
+}
+.ec-button-active {
+    background-color: #e8e8e8 !important;
+}
+.ec-event-height {
+    min-height: 4px !important;
+    height: 4px !important;
+}
+.event-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.weight-legend {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+    font-size: 13px;
+    font-weight: 500;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.weight-legend span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.legend-line {
+    width: 30px;
+    height: 6px;
+    border-radius: 0;
+    display: inline-block;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(131, 33, 27, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(131, 33, 27, 0.4), 0 0 30px rgba(131, 33, 27, 0.2);
+    }
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes progressBar {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slideInLeft {
+    animation: slideInFromLeft 0.5s ease-out forwards;
+}
+
+.animate-slideInRight {
+    animation: slideInFromRight 0.5s ease-out forwards;
+}
+
+.animate-slideInBottom {
+    animation: slideInFromBottom 0.6s ease-out forwards;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.4s ease-out forwards;
+}
+
+.animate-bounce {
+    animation: bounce 1s ease-in-out infinite;
+}
+
+.animate-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Staggered animation delays for cards */
+.summary-card:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.summary-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.summary-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.summary-card:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+/* Enhanced summary cards */
+.summary-card {
+    position: relative;
+    overflow: hidden;
+    min-width: 220px;
+    min-height: 160px;
+}
+
+.summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.summary-card:hover::before {
+    left: 100%;
+}
+
+/* Enhanced icon containers */
+.icon-container-large {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+}
+
+.icon-container-large img {
+    width: 28px;
+    height: 28px;
+}
+
+/* Card header enhancements */
+.card-header-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-header-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Graph animations */
+.ec-event {
+    animation: scaleIn 0.3s ease-out;
+    transform-origin: bottom;
+}
+
+.ec-all-day .ec-event {
+    animation: slideInFromBottom 0.4s ease-out;
+}
+
+/* Calendar container animation */
+.calendar-container {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Number counter animation */
+.counter-value {
+    animation: countUp 0.8s ease-out;
+}
+
+/* Progress bar animation */
+.progress-bar {
+    animation: progressBar 1s ease-out forwards;
+}
+
+/* Icon rotation on hover */
+.icon-rotate:hover {
+    animation: rotate 0.6s ease-in-out;
+}
+
+/* Enhanced button animations */
+.ec-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.ec-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+}
+
+.ec-button:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* Tooltip animations */
+.event-tooltip {
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Loading shimmer effect */
+.loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}

@@ -1,0 +1,1060 @@
+/* ── Semantic design tokens ──────────────────────────────────────────────────
+   One place to change what a colour *means* in Pulse. Everything below (and the
+   .*-btn / .status-badge / .quality-* classes further down) reads from these, so
+   a control's colour follows from its meaning rather than from the page it sits
+   on.
+
+   Actions        primary  affirmative create/save   green
+                  edit     non-destructive change    blue
+                  danger   destructive/irreversible  red
+                  warning  caution, needs attention  amber
+                  neutral  cancel/back/dismiss       grey
+   Direction      inward   receive / add-to-stock    brick   (matches the Inward
+                  outward  issue / remove-from-stock blue     chart series)
+   Binary state   on       active/enabled/running    green
+                  off      inactive/disabled/stopped grey  (never red — "off" is
+                                                            not a fault)
+   Data quality   good / average / bad               green / amber / red
+   ──────────────────────────────────────────────────────────────────────────── */
+:root {
+    /* Action colours */
+    --pulse-primary: #15803d;
+    --pulse-primary-hover: #166534;
+    --pulse-primary-active: #14532d;
+    --pulse-primary-ring: rgba(21, 128, 61, 0.4);
+
+    --pulse-edit: #2563eb;
+    --pulse-edit-hover: #1d4ed8;
+    --pulse-edit-active: #1e40af;
+    --pulse-edit-ring: rgba(37, 99, 235, 0.4);
+
+    --pulse-danger: #dc2626;
+    --pulse-danger-hover: #b91c1c;
+    --pulse-danger-active: #991b1b;
+    --pulse-danger-ring: rgba(220, 38, 38, 0.4);
+
+    --pulse-warning: #d97706;
+    --pulse-warning-hover: #b45309;
+    --pulse-warning-active: #92400e;
+    --pulse-warning-ring: rgba(217, 119, 6, 0.4);
+
+    --pulse-neutral: #4b5563;
+    --pulse-neutral-hover: #374151;
+    --pulse-neutral-active: #1f2937;
+    --pulse-neutral-ring: rgba(75, 85, 99, 0.4);
+
+    --pulse-impersonate: #4f46e5;
+    --pulse-impersonate-hover: #4338ca;
+    --pulse-impersonate-active: #3730a3;
+    --pulse-impersonate-ring: rgba(79, 70, 229, 0.4);
+
+    /* Directional / transactional colours — shared with the inventory charts */
+    --pulse-inward: #a82824;
+    --pulse-inward-hover: #8c201d;
+    --pulse-inward-active: #741a17;
+    --pulse-inward-ring: rgba(168, 40, 36, 0.4);
+
+    --pulse-outward: #1565c0;
+    --pulse-outward-hover: #114f99;
+    --pulse-outward-active: #0d3f7a;
+    --pulse-outward-ring: rgba(21, 101, 192, 0.4);
+
+    /* Binary state + data quality (also mirrored in config/colors.php states) */
+    --pulse-state-on: #16a34a;
+    --pulse-state-off: #9ca3af;
+    --pulse-quality-good: #16a34a;
+    --pulse-quality-average: #f59e0b;
+    --pulse-quality-bad: #dc2626;
+
+    /* Disabled treatment, shared by every button variant */
+    --pulse-disabled-bg: #d1d5db;
+    --pulse-disabled-fg: #6b7280;
+
+    /* Brand (COLOR_PRIMARY): links, active states, brand-red labels */
+    --pulse-brand: #83211b;
+}
+
+/* ── Typography (docs/typography.md) ─────────────────────────────────────────
+   Declared in Tailwind's own layer order so a colour utility on the same
+   element (e.g. text-[#8a7f78]) still overrides the default grey. */
+@layer properties, theme, base, components, utilities;
+
+@layer components {
+    .caps-label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#6b7280;line-height:1.3}
+
+    /* Shared list-table header row: every <th> in it reads as a caps label. */
+    .table-header{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#6b7280;line-height:1.3}
+}
+
+/* Loading States */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.wire-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background-color: #f9fafb;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb-item a {
+    color: var(--pulse-brand);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #111827;
+    font-weight: 500;
+}
+
+.breadcrumb-separator {
+    color: #9ca3af;
+}
+
+/* Tooltips */
+.tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1000;
+    background-color: #1f2937;
+    color: white;
+    text-align: center;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.tooltip-wrapper:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-top {
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip-bottom {
+    top: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip-left {
+    right: 125%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.tooltip-right {
+    left: 125%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    border-width: 5px;
+    border-style: solid;
+}
+
+.tooltip-top::after {
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-color: #1f2937 transparent transparent transparent;
+}
+
+.tooltip-bottom::after {
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-color: transparent transparent #1f2937 transparent;
+}
+
+.tooltip-left::after {
+    left: 100%;
+    top: 50%;
+    margin-top: -5px;
+    border-color: transparent transparent transparent #1f2937;
+}
+
+.tooltip-right::after {
+    right: 100%;
+    top: 50%;
+    margin-top: -5px;
+    border-color: transparent #1f2937 transparent transparent;
+}
+
+/* Confirmation Modals */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    animation: scaleIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.modal-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.modal-icon-danger {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.modal-icon-warning {
+    background-color: #fef3c7;
+    color: #f59e0b;
+}
+
+.modal-icon-info {
+    background-color: #dbeafe;
+    color: #3b82f6;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.modal-body {
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+@media (max-width: 640px) {
+    .modal-content {
+        width: 95%;
+        padding: 16px;
+    }
+}
+
+/* Sticky Table Headers */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+}
+
+.sticky-header th {
+    position: sticky;
+    top: 0;
+    background-color: #f9fafb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Search Input Enhancement */
+.search-input {
+    position: relative;
+}
+
+.search-input input {
+    padding-left: 36px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    pointer-events: none;
+}
+
+/* Button variants all live together further down — see "Button system". */
+
+/* input-type, select-type, textarea-type Styles */
+.input-type,.select-type,.textarea-type{
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 0.375rem;
+    border-color: #d8d2cc;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.input-type:hover,.select-type:hover,.textarea-type:hover{
+    border-color: #861e1a;
+}
+.input-type:focus,.select-type:focus,.textarea-type:focus{
+    border-color: #861e1a;
+    outline: 0px solid #861e1a;
+    outline-offset: 0px;
+    box-shadow: 0px 0px 2px #861e1a;
+}
+
+/* Hide the number-input step up/down spinners */
+input.no-spinner::-webkit-outer-spin-button,
+input.no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input.no-spinner[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+input.no-spinner:focus::placeholder {
+    color: transparent;
+}
+
+/* Production create/edit forms (Pith, Fibre, Pith Blocks) */
+.prod-form {
+    background: #ffffff;
+    border: 1px solid #d8d2cc;
+    border-radius: 10px;
+}
+.prod-section {
+    padding: 1.25rem 1.5rem 1.4rem;
+}
+.prod-section + .prod-section {
+    border-top: 1px solid #d8d2cc;
+}
+.prod-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #861e1a;
+    margin-bottom: 1rem;
+}
+.prod-section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #d8d2cc;
+}
+.prod-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem 2rem;
+}
+@media (max-width: 640px) {
+    .prod-grid {
+        grid-template-columns: 1fr;
+    }
+    .prod-grid .prod-span-2 {
+        grid-column: auto;
+    }
+}
+.prod-span-2 {
+    grid-column: 1 / -1;
+}
+.prod-label {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4b443f;
+    margin-bottom: 0.3rem;
+}
+.prod-label .label-why {
+    margin-left: auto;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8a7f78;
+}
+.input-locked {
+    background-color: #f5f3f0 !important;
+    color: #6d645d !important;
+    border-color: #f0ede9 !important;
+    cursor: not-allowed;
+    opacity: 1 !important;
+}
+.prod-chip {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    background: #f0ede9;
+    color: #5b534d;
+    border-radius: 9999px;
+    padding: 0.1rem 0.6rem;
+    font-variant-numeric: tabular-nums;
+}
+.prod-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #d8d2cc;
+    background: #fbfaf8;
+    border-radius: 0 0 10px 10px;
+}
+.prod-rail-card {
+    background: #ffffff;
+    border: 1px solid #d8d2cc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.prod-rail-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid #d8d2cc;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #861e1a;
+}
+.prod-rail-head .rail-when {
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: none;
+    font-size: 12px;
+    color: #8a7f78;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Table Header */
+.table-header {
+    background-color: #f8f8f8;
+}
+
+/* Hidden Laravel Symbol */
+.phpdebugbar-restore-btn {
+    display: block !important;
+}
+
+/* Date-range picker popup: use the app font instead of the vendor default (Arial) */
+.daterangepicker {
+    font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
+}
+
+/* ── Button system ───────────────────────────────────────────────────────────
+   Every Pulse button is one of these. Pick by what the action *means*, not by
+   how prominent you want it to look — the emphasis is already baked in.
+
+     .add-btn        primary create/add on a page header      solid green
+     .save-btn       form submit / confirm in a dialog        solid green
+     .cancel-btn     cancel / back / dismiss                  solid grey
+     .edit-btn       edit an existing record                  solid blue
+     .delete-btn     destructive, irreversible                solid red
+     .warn-btn       consequential but not destructive        solid amber
+                     (transfer ownership, force-close …)
+     .inward-btn     receive / add-to-stock                   solid brick
+     .outward-btn    issue / remove-from-stock                solid blue
+     .activate-btn   turn on / enable                         solid green
+     .deactivate-btn turn off / disable (reversible, so       outlined grey
+                     deliberately NOT red)
+
+   Modifier: .btn-xs shrinks padding and type together for table-row actions.
+
+   Shared behaviour (hover, active, focus ring, disabled, wire:loading) comes
+   from the grouped rules below, so a new variant only declares its colours.
+   ──────────────────────────────────────────────────────────────────────────── */
+.add-btn,
+.save-btn,
+.cancel-btn,
+.edit-btn,
+.delete-btn,
+.warn-btn,
+.inward-btn,
+.outward-btn,
+.activate-btn,
+.deactivate-btn,
+.impersonate-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.5rem 0.9375rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.15s ease, border-color 0.15s ease,
+                color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* The page-header primary sits a touch wider than in-form buttons */
+.add-btn {
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Keyboard focus is always visible, and always in the button's own colour */
+.add-btn:focus-visible,
+.save-btn:focus-visible,
+.cancel-btn:focus-visible,
+.edit-btn:focus-visible,
+.delete-btn:focus-visible,
+.warn-btn:focus-visible,
+.inward-btn:focus-visible,
+.outward-btn:focus-visible,
+.activate-btn:focus-visible,
+.deactivate-btn:focus-visible,
+.impersonate-btn:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px var(--pulse-btn-ring, var(--pulse-neutral-ring));
+}
+
+/* Pressed state — a small inset shift reads as "pushed" without a new colour */
+.add-btn:active,
+.save-btn:active,
+.cancel-btn:active,
+.edit-btn:active,
+.delete-btn:active,
+.warn-btn:active,
+.inward-btn:active,
+.outward-btn:active,
+.activate-btn:active,
+.deactivate-btn:active,
+.impersonate-btn:active {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+/* One disabled treatment for every variant, including Livewire's loading attr */
+.add-btn:disabled,
+.save-btn:disabled,
+.cancel-btn:disabled,
+.edit-btn:disabled,
+.delete-btn:disabled,
+.warn-btn:disabled,
+.inward-btn:disabled,
+.outward-btn:disabled,
+.activate-btn:disabled,
+.deactivate-btn:disabled,
+.impersonate-btn:disabled,
+.add-btn[disabled],
+.save-btn[disabled],
+.cancel-btn[disabled],
+.edit-btn[disabled],
+.delete-btn[disabled],
+.warn-btn[disabled],
+.inward-btn[disabled],
+.outward-btn[disabled],
+.activate-btn[disabled],
+.deactivate-btn[disabled],
+.impersonate-btn[disabled] {
+    background-color: var(--pulse-disabled-bg);
+    border-color: var(--pulse-disabled-bg);
+    color: var(--pulse-disabled-fg);
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 1;
+}
+
+/* Loading — Livewire sets this while a wire:target is in flight */
+.add-btn[wire\:loading],
+.save-btn[wire\:loading],
+.edit-btn[wire\:loading],
+.delete-btn[wire\:loading],
+.warn-btn[wire\:loading],
+.inward-btn[wire\:loading],
+.outward-btn[wire\:loading],
+.activate-btn[wire\:loading],
+.deactivate-btn[wire\:loading],
+.impersonate-btn[wire\:loading] {
+    cursor: progress;
+}
+
+/* Compact variant for actions inside table rows */
+.btn-xs {
+    gap: 0.3125rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    border-radius: 0.375rem;
+}
+
+/* ── Variant colours ─────────────────────────────────────────────────────── */
+.add-btn,
+.save-btn,
+.activate-btn {
+    background-color: var(--pulse-primary);
+    --pulse-btn-ring: var(--pulse-primary-ring);
+}
+.add-btn:hover:not(:disabled),
+.save-btn:hover:not(:disabled),
+.activate-btn:hover:not(:disabled) {
+    background-color: var(--pulse-primary-hover);
+}
+.add-btn:active:not(:disabled),
+.save-btn:active:not(:disabled),
+.activate-btn:active:not(:disabled) {
+    background-color: var(--pulse-primary-active);
+}
+
+.cancel-btn {
+    background-color: var(--pulse-neutral);
+    --pulse-btn-ring: var(--pulse-neutral-ring);
+    box-shadow: none;
+}
+.cancel-btn:hover:not(:disabled) {
+    background-color: var(--pulse-neutral-hover);
+}
+.cancel-btn:active:not(:disabled) {
+    background-color: var(--pulse-neutral-active);
+}
+
+.edit-btn {
+    background-color: var(--pulse-edit);
+    --pulse-btn-ring: var(--pulse-edit-ring);
+}
+.edit-btn:hover:not(:disabled) {
+    background-color: var(--pulse-edit-hover);
+}
+.edit-btn:active:not(:disabled) {
+    background-color: var(--pulse-edit-active);
+}
+
+.delete-btn {
+    background-color: var(--pulse-danger);
+    --pulse-btn-ring: var(--pulse-danger-ring);
+}
+.delete-btn:hover:not(:disabled) {
+    background-color: var(--pulse-danger-hover);
+}
+.delete-btn:active:not(:disabled) {
+    background-color: var(--pulse-danger-active);
+}
+
+.warn-btn {
+    background-color: var(--pulse-warning);
+    --pulse-btn-ring: var(--pulse-warning-ring);
+}
+.warn-btn:hover:not(:disabled) {
+    background-color: var(--pulse-warning-hover);
+}
+.warn-btn:active:not(:disabled) {
+    background-color: var(--pulse-warning-active);
+}
+
+.inward-btn {
+    background-color: var(--pulse-inward);
+    --pulse-btn-ring: var(--pulse-inward-ring);
+}
+.inward-btn:hover:not(:disabled) {
+    background-color: var(--pulse-inward-hover);
+}
+.inward-btn:active:not(:disabled) {
+    background-color: var(--pulse-inward-active);
+}
+
+.outward-btn {
+    background-color: var(--pulse-outward);
+    --pulse-btn-ring: var(--pulse-outward-ring);
+}
+.outward-btn:hover:not(:disabled) {
+    background-color: var(--pulse-outward-hover);
+}
+.outward-btn:active:not(:disabled) {
+    background-color: var(--pulse-outward-active);
+}
+
+/* Deactivate is reversible, so it is outlined and neutral rather than red —
+   red is reserved for genuinely destructive actions (.delete-btn). */
+.deactivate-btn {
+    background-color: #ffffff;
+    border-color: #9ca3af;
+    color: #374151;
+    --pulse-btn-ring: var(--pulse-neutral-ring);
+    box-shadow: none;
+}
+.deactivate-btn:hover:not(:disabled) {
+    background-color: #f3f4f6;
+    border-color: #6b7280;
+    color: #1f2937;
+}
+.deactivate-btn:active:not(:disabled) {
+    background-color: #e5e7eb;
+}
+
+.impersonate-btn {
+    background-color: var(--pulse-impersonate);
+    --pulse-btn-ring: var(--pulse-impersonate-ring);
+}
+.impersonate-btn:hover:not(:disabled) {
+    background-color: var(--pulse-impersonate-hover);
+}
+.impersonate-btn:active:not(:disabled) {
+    background-color: var(--pulse-impersonate-active);
+}
+
+/* ── Status badges ───────────────────────────────────────────────────────────
+   Pale pills, deliberately not the solid fills used by buttons, so a *state*
+   never reads as something you can click. Pair with an icon or the label text
+   so the meaning does not rest on colour alone.
+
+     .status-on / .status-off        active·running vs inactive·stopped
+     .status-good / .status-average / .status-bad    IoT data quality
+     .status-info / .status-neutral  informational, no judgement
+   ──────────────────────────────────────────────────────────────────────────── */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1rem;
+    white-space: nowrap;
+}
+
+.status-badge.status-on,
+.status-badge.status-good {
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
+    color: #15803d;
+}
+
+.status-badge.status-off {
+    background-color: #f3f4f6;
+    border-color: #e5e7eb;
+    color: #4b5563;
+}
+
+.status-badge.status-average {
+    background-color: #fffbeb;
+    border-color: #fde68a;
+    color: #b45309;
+}
+
+.status-badge.status-bad {
+    background-color: #fef2f2;
+    border-color: #fecaca;
+    color: #b91c1c;
+}
+
+.status-badge.status-info {
+    background-color: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1d4ed8;
+}
+
+.status-badge.status-neutral {
+    background-color: #f9fafb;
+    border-color: #e5e7eb;
+    color: #4b5563;
+}
+
+/* Small leading dot for status badges and legends — carries the saturated
+   colour so the pale badge background can stay readable behind text. */
+.status-dot {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    flex-shrink: 0;
+    background-color: currentColor;
+}
+.status-dot.dot-on,
+.status-dot.dot-good {
+    background-color: var(--pulse-state-on);
+}
+.status-dot.dot-off {
+    background-color: var(--pulse-state-off);
+}
+.status-dot.dot-average {
+    background-color: var(--pulse-quality-average);
+}
+.status-dot.dot-bad {
+    background-color: var(--pulse-quality-bad);
+}
+.status-dot.dot-inward {
+    background-color: var(--pulse-inward);
+}
+.status-dot.dot-outward {
+    background-color: var(--pulse-outward);
+}
+
+/* ── Directional helpers ─────────────────────────────────────────────────────
+   Inward/Outward figures in tables, KPI tiles and legends read from the same
+   tokens as .inward-btn / .outward-btn, so a number and its button always
+   agree. Replaces the hard-coded #a82824 / #1565c0 that were inlined per view.
+   ──────────────────────────────────────────────────────────────────────────── */
+.text-inward { color: var(--pulse-inward); }
+.text-outward { color: var(--pulse-outward); }
+.bg-inward { background-color: var(--pulse-inward); }
+.bg-outward { background-color: var(--pulse-outward); }
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    pointer-events: none;
+}
+
+.toast {
+    padding: 16px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 300px;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: auto;
+    backdrop-filter: blur(8px);
+}
+
+.toast.toast-show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.toast-message {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.toast-success {
+    background-color: #10b981;
+    color: white;
+    border-left: 4px solid #059669;
+}
+
+.toast-error {
+    background-color: #ef4444;
+    color: white;
+    border-left: 4px solid #dc2626;
+}
+
+.toast-warning {
+    background-color: #f59e0b;
+    color: white;
+    border-left: 4px solid #d97706;
+}
+
+.toast-info {
+    background-color: #3b82f6;
+    color: white;
+    border-left: 4px solid #2563eb;
+}
+
+.toast-close {
+    margin-left: auto;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    opacity: 0.8;
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.toast-close:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.toast-close:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+.toast.hiding {
+    transform: translateX(400px);
+    opacity: 0;
+}
+
+@media (max-width: 640px) {
+    .toast-container {
+        right: 10px;
+        left: 10px;
+        top: 60px;
+        max-width: none;
+    }
+
+    .toast {
+        min-width: auto;
+        width: 100%;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .toast {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .toast {
+        transition: opacity 0.3s ease;
+        transform: none !important;
+    }
+
+    .toast.toast-show {
+        opacity: 1;
+    }
+
+    .toast.hiding {
+        opacity: 0;
+    }
+}
+
+/* Export Button Styles */
+.export-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #10b981;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.export-btn:hover {
+    background-color: #059669;
+}
+
+.export-btn:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* Disabled State */
+[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

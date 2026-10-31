@@ -1,0 +1,883 @@
+/* ================================================================
+   Factory Wizard — Design System CSS
+   Style: Warm cream sidebar, clean white content, soft inputs,
+          uppercase amber labels, outlined step circles, muted buttons
+   ================================================================ */
+
+.factory-wizard {
+    --ink:           #1C140E;
+    --paper:         #F6EFE4;
+    --paper-dark:    #EDE4D6;
+    --rust:          #9C3B24;
+    --rust-hover:    #7F2F1D;
+    --amber:         #B8651A;
+    --brown:         #7A5C40;
+    --line:          #DDD0BC;
+    --line-light:    #EDE5D8;
+    --danger:        #DC2626;
+    --danger-bg:     #FEF2F2;
+    --danger-border: #FCA5A5;
+    --white:         #FFFFFF;
+    --btn-muted:     #D6CAB8;
+    --btn-muted-hover: #C5B89E;
+
+    color: var(--ink);
+    width: 100%;
+    min-height: calc(100vh - 65px);
+    margin: 0;
+    padding: 0;
+    background: var(--white);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    overflow: hidden;
+}
+
+/* ── 12-Column Grid ─────────────────────────────────── */
+.wiz-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0.75rem;
+    align-items: start;
+}
+.wiz-grid .col-4  { grid-column: span 4; }
+.wiz-grid .col-6  { grid-column: span 6; }
+.wiz-grid .col-8  { grid-column: span 8; }
+.wiz-grid .col-12 { grid-column: span 12; }
+
+@media (max-width: 850px) {
+    .wiz-grid .col-4,
+    .wiz-grid .col-6,
+    .wiz-grid .col-8 { grid-column: span 12; }
+}
+
+/* ── Sidebar ────────────────────────────────────────── */
+.factory-wizard-sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    padding: 1.75rem 1.25rem;
+    background-color: var(--paper);
+    border-right: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.factory-wizard-sidebar h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.1rem;
+    letter-spacing: normal;
+}
+
+.factory-wizard-sidebar .subtext {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--brown);
+    margin-bottom: 1.75rem;
+    letter-spacing: normal;
+}
+
+/* Step nav items */
+.factory-wizard-sidebar nav > button {
+    padding: 0.3rem 0;
+}
+
+/* Step circles */
+.step-circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+/* Completed: filled rust */
+.step-completed .step-circle {
+    background-color: var(--rust);
+    color: white;
+    border: 2px solid var(--rust);
+}
+
+/* Active: filled rust with outer ring */
+.step-active .step-circle {
+    background-color: var(--rust);
+    color: white;
+    border: 2px solid var(--rust);
+    box-shadow: 0 0 0 3px var(--paper), 0 0 0 4.5px var(--rust);
+}
+
+/* Pending: outlined only, no fill */
+.step-pending .step-circle {
+    background-color: transparent;
+    color: var(--brown);
+    border: 1.5px solid var(--btn-muted);
+}
+
+/* Step label typography */
+.factory-wizard-sidebar p.font-semibold {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+}
+.step-pending ~ div p,
+.step-pending + div p {
+    color: var(--brown);
+}
+
+/* ── Content Area ───────────────────────────────────── */
+.factory-wizard-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--white);
+    min-width: 0;
+}
+
+.factory-wizard-body {
+    flex: 1;
+    padding: 1.75rem 2.25rem;
+    overflow-y: auto;
+}
+
+/* Step title */
+.factory-wizard-body > h3 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: normal;
+    color: var(--ink);
+    margin-bottom: 0.1rem;
+}
+
+/* Step subtitle */
+.factory-wizard-body > p.text-xs.text-\[var\(--brown\)\] {
+    font-size: 13px;
+    color: var(--brown);
+}
+
+.factory-wizard-footer {
+    padding: 0.85rem 2.25rem;
+    border-top: 1px solid var(--line-light);
+    background-color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ── Labels ─────────────────────────────────────────── */
+.wizard-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.wizard-required {
+    color: var(--danger);
+    font-weight: 600;
+    margin-left: 0.1rem;
+}
+
+/* ── Section headers ────────────────────────────────── */
+.wizard-section-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--amber);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--line-light);
+    margin-bottom: 0.65rem;
+    margin-top: 0.5rem;
+}
+
+/* ── Inputs ─────────────────────────────────────────── */
+.input-field {
+    width: 100%;
+    border: 1.5px solid var(--line);
+    border-radius: 0.5rem;
+    padding: 0.55rem 0.85rem;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 0.875rem;
+    font-family: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    line-height: 1.4;
+}
+
+.input-field::placeholder {
+    color: #B5A898;
+    font-style: italic;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(184, 101, 26, 0.1);
+}
+
+.input-field.is-invalid {
+    border-color: var(--danger) !important;
+    background-color: #FFFAFA;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08) !important;
+}
+
+.input-field:disabled,
+.input-field[readonly] {
+    background-color: var(--paper);
+    color: var(--brown);
+    cursor: not-allowed;
+    border-color: var(--line-light);
+}
+
+/* ── Toggle Cards (Pulse) ───────────────────────────── */
+.toggle-card {
+    border: 1.5px solid var(--line);
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.75rem;
+    cursor: pointer;
+    background: var(--white);
+    transition: border-color 0.2s ease, background-color 0.2s ease,
+                box-shadow 0.2s ease, padding 0.25s ease;
+    display: grid;
+    /* collapsed: header row only; expanded: header + 0fr auto for details */
+    grid-template-rows: auto 0fr;
+    gap: 0;
+    overflow: hidden;
+}
+
+/* The inner expand wrapper (wraps the @if block) */
+.toggle-card-expand {
+    min-height: 0;
+    overflow: hidden;
+    transition: min-height 0.3s ease;
+}
+
+.toggle-card:hover {
+    border-color: var(--amber);
+    box-shadow: 0 2px 8px rgba(184, 101, 26, 0.08);
+}
+
+.toggle-card.active {
+    border-color: var(--rust);
+    background-color: #FFF8F5;
+    box-shadow: 0 2px 10px rgba(156, 59, 36, 0.08);
+    grid-template-rows: auto 1fr;
+    padding: 1.75rem;
+}
+
+/* ── Product Badges and Checklist ───────────────────── */
+
+/* Unselected: muted gray badge */
+.product-icon-badge {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--paper-dark);
+    color: var(--brown);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Selected: brand rust badge */
+.toggle-card.active .product-icon-badge {
+    background-color: var(--rust);
+    color: var(--white);
+}
+
+.feature-pill {
+    background-color: var(--paper-dark);
+    color: var(--brown);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid var(--line);
+}
+
+.checklist-item {
+    font-size: 0.75rem;
+    color: var(--brown);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ── Input Wrapper with Icons and Validation ────────── */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-wrapper .input-icon-left {
+    position: absolute;
+    left: 0.75rem;
+    color: var(--brown);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.input-wrapper .input-icon-right {
+    position: absolute;
+    right: 0.75rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.input-wrapper .input-field {
+    padding-right: 2.25rem;
+}
+
+.input-wrapper.has-left-icon .input-field {
+    padding-left: 2.25rem;
+}
+
+.wiz-error-text {
+    color: var(--danger);
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    display: block;
+    font-weight: 500;
+}
+
+/* ── Custom Checkbox Box (toggle-card header) ────────── */
+.wiz-checkbox-box {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 5px;
+    border: 1.75px solid var(--line);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.18s ease, background-color 0.18s ease,
+                box-shadow 0.18s ease;
+}
+
+.toggle-card:hover .wiz-checkbox-box:not(.checked) {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(184, 101, 26, 0.12);
+}
+
+.wiz-checkbox-box.checked {
+    background-color: var(--rust);
+    border-color: var(--rust);
+    box-shadow: 0 0 0 3px rgba(156, 59, 36, 0.15);
+}
+
+.wiz-checkbox-box svg {
+    width: 12px;
+    height: 12px;
+    color: white;
+}
+
+/* ── Submodule Cards (Step 2) ───────────────────────── */
+.submodule-card {
+    border: 1.5px solid var(--line);
+    border-radius: 0.6rem;
+    padding: 0.75rem 1rem;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.submodule-card:hover {
+    border-color: var(--amber);
+}
+
+.submodule-card.active {
+    border-color: var(--rust);
+    background-color: #FFF8F5;
+}
+
+.submodule-icon-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--paper);
+    color: var(--rust);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* ── Add-On Modules Stack (Step 2) ───────────────────── */
+.addon-modules-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 480px;
+}
+
+.addon-card {
+    border: 1.5px solid var(--line);
+    border-radius: 0.5rem;
+    padding: 0.55rem 0.85rem;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+}
+
+.addon-card:hover {
+    border-color: var(--amber);
+}
+
+.addon-card.active {
+    border-color: var(--rust);
+    background-color: #FFF8F5;
+}
+
+.addon-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.addon-card-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    flex: 1;
+}
+
+.addon-icon-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--paper);
+    color: var(--rust);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.addon-chevron {
+    color: var(--brown);
+    font-size: 13px;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: transform 0.2s ease;
+}
+
+.addon-details-pane {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line-light);
+}
+
+/* ── Toggle Switch ──────────────────────────────────── */
+.wizard-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.wizard-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.wizard-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--btn-muted);
+    transition: .3s;
+    border-radius: 20px;
+}
+
+.wizard-slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+input:checked + .wizard-slider { background-color: var(--rust); }
+input:checked + .wizard-slider:before { transform: translateX(20px); }
+
+/* ── Module Option (Pith / Fibre / Growbags) ────────── */
+.wizard-module-option {
+    padding: 0.65rem 0.85rem;
+    border: 1.5px solid var(--line);
+    border-radius: 0.6rem;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.18s ease;
+    cursor: pointer;
+    background: var(--white);
+    color: var(--ink);
+    letter-spacing: normal;
+}
+
+.wizard-module-option:hover {
+    background-color: var(--paper);
+    border-color: var(--amber);
+}
+
+.wizard-module-option.active {
+    background-color: var(--rust);
+    color: #ffffff;
+    border-color: var(--rust);
+    box-shadow: 0 2px 6px rgba(156, 59, 36, 0.2);
+}
+
+/* ── Error Box ──────────────────────────────────────── */
+.wizard-error-box {
+    margin-bottom: 1rem;
+    padding: 0.7rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--danger-bg);
+    border: 1px solid var(--danger-border);
+    color: var(--danger);
+    font-size: 13px;
+    line-height: 1.4;
+}
+.wizard-error-box ul { list-style-type: disc; padding-left: 1rem; margin: 0; }
+.wizard-error-box li { margin-bottom: 0.15rem; }
+.wizard-error-box li:last-child { margin-bottom: 0; }
+
+/* ── Buttons ────────────────────────────────────────── */
+
+/* Continue / primary action */
+.btn-wizard-primary {
+    padding: 0.55rem 1.6rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 13px;
+    background-color: var(--rust);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    letter-spacing: normal;
+}
+
+.btn-wizard-primary:hover:not(:disabled) {
+    background-color: var(--rust-hover);
+}
+
+.btn-wizard-primary:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* Back / secondary */
+.btn-wizard-secondary {
+    padding: 0.55rem 1.4rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 13px;
+    background-color: var(--btn-muted);
+    border: none;
+    color: var(--ink);
+    transition: all 0.15s ease;
+}
+
+.btn-wizard-secondary:hover:not(:disabled) {
+    background-color: var(--btn-muted-hover);
+}
+
+/* Create Factory / submit */
+.btn-wizard-submit {
+    padding: 0.55rem 1.6rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 13px;
+    background-color: #16A34A;
+    color: #ffffff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn-wizard-submit:hover:not(:disabled) { background-color: #15803D; }
+.btn-wizard-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── Preview Cards ──────────────────────────────────── */
+/* ── Preview Cards ──────────────────────────────────── */
+.wizard-preview-card {
+    background: linear-gradient(135deg, #8E3014 0%, #5E1A07 100%);
+    border-radius: 12px;
+    padding: 1.75rem;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(94, 26, 7, 0.15);
+    margin-bottom: 1.25rem;
+}
+.wizard-preview-card-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+}
+.wizard-preview-factory-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    flex-shrink: 0;
+}
+.wizard-preview-info {
+    flex: 1;
+}
+.wizard-preview-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+.wizard-preview-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: #ffffff;
+    line-height: 1.2;
+}
+.wizard-preview-badge {
+    background: rgba(40, 167, 69, 0.25);
+    border: 1px solid rgba(40, 167, 69, 0.5);
+    color: #4ade80;
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: inline-flex;
+    align-items: center;
+}
+.wizard-preview-products {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+.wizard-preview-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.wizard-preview-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.wizard-preview-stat-item i {
+    opacity: 0.8;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+.wizard-preview-stat-content {
+    display: flex;
+    flex-direction: column;
+}
+.wizard-preview-stat-label {
+    opacity: 0.7;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+.wizard-preview-stat-value {
+    font-weight: 600;
+    font-size: 14px;
+}
+.wizard-preview-card-right {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 160px;
+    margin-left: 1.5rem;
+}
+.wizard-preview-right-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.wizard-preview-right-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+.wizard-preview-right-content {
+    display: flex;
+    flex-direction: column;
+}
+.wizard-preview-right-label {
+    font-size: 12px;
+    opacity: 0.7;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.wizard-preview-right-value {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Details Section Card */
+.wizard-preview-detail {
+    background-color: #ffffff;
+    border: 1px solid var(--line);
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+.wizard-preview-detail-left {
+    display: flex;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+.wizard-preview-detail-icon-badge {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1.5px solid #F3EAE6;
+    background: #FCF9F7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8E3014;
+    font-size: 1.2rem;
+}
+.wizard-preview-detail-right {
+    flex: 1;
+}
+.wizard-preview-detail-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2D1B16;
+    margin: 0 0 0.75rem 0;
+}
+.wizard-preview-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem 1.5rem;
+}
+.wizard-preview-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 13px;
+    color: #4A3A35;
+}
+.wizard-preview-detail-item i {
+    color: #8E3014;
+    opacity: 0.75;
+    font-size: 0.95rem;
+    width: 18px;
+    text-align: center;
+}
+.wizard-preview-detail-label {
+    font-weight: 600;
+    color: #6D5C56;
+}
+.wizard-preview-detail-value {
+    font-weight: 500;
+    color: #2D1B16;
+}
+.wizard-preview-address-block {
+    grid-column: span 3;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 13px;
+    color: #4A3A35;
+}
+.wizard-preview-address-block i {
+    color: #8E3014;
+    opacity: 0.75;
+    font-size: 0.95rem;
+    width: 18px;
+    text-align: center;
+    margin-top: 2px;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 850px) {
+    .factory-wizard { flex-direction: column; }
+    .factory-wizard-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding: 1rem 1.25rem;
+    }
+}

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 560" width="880" height="560">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;font-size:11.5px;fill:#000}
+.n{fill:#fff;stroke:#000;stroke-width:1.2}
+.g{fill:#f0f0f0;stroke:#000;stroke-width:1.2}
+.srv{fill:#fafafa;stroke:#000;stroke-width:1.4}
+.t{font-weight:bold;font-size:12px}
+.s{font-size:10.5px}
+.f{stroke:#000;stroke-width:1.1;fill:none}
+.d{stroke:#000;stroke-width:1.1;fill:none;stroke-dasharray:5,4}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z"/></marker></defs>
+<rect x="40" y="15" width="230" height="52" class="n"/><text x="155" y="37" text-anchor="middle" class="t">Client devices</text><text x="155" y="54" text-anchor="middle" class="s">browsers, mobile app</text>
+<rect x="610" y="15" width="230" height="52" class="n"/><text x="725" y="37" text-anchor="middle" class="t">IoT devices</text><text x="725" y="54" text-anchor="middle" class="s">counters, meters, tank sensors</text>
+<rect x="40" y="100" width="230" height="44" class="g"/><text x="155" y="120" text-anchor="middle" class="t">Cloudflare</text><text x="155" y="136" text-anchor="middle" class="s">HTTPS proxy</text>
+<line x1="155" y1="67" x2="155" y2="100" class="f" marker-end="url(#a)"/>
+
+<!-- EC2 server -->
+<rect x="20" y="180" width="840" height="250" class="srv"/>
+<text x="32" y="198" class="t">AWS EC2 instance - Ubuntu Linux 22.04 / 24.04</text>
+<rect x="40" y="215" width="190" height="56" class="n"/><text x="135" y="238" text-anchor="middle" class="t">Nginx</text><text x="135" y="255" text-anchor="middle" class="s">TLS, static assets</text>
+<rect x="280" y="215" width="230" height="56" class="n"/><text x="395" y="238" text-anchor="middle" class="t">PHP-FPM 8.3</text><text x="395" y="255" text-anchor="middle" class="s">Laravel application (web + API)</text>
+<rect x="40" y="320" width="190" height="90" class="n"/><text x="135" y="342" text-anchor="middle" class="t">cron</text><text x="135" y="362" text-anchor="middle" class="s">every minute:</text><text x="135" y="377" text-anchor="middle" class="s">php artisan schedule:run</text>
+<rect x="280" y="320" width="230" height="90" class="n"/><text x="395" y="342" text-anchor="middle" class="t">Supervisor</text><text x="395" y="362" text-anchor="middle" class="s">keeps Horizon running;</text><text x="395" y="377" text-anchor="middle" class="s">Horizon queue workers</text><text x="395" y="392" text-anchor="middle" class="s">(processing, alerts, exports)</text>
+<rect x="580" y="215" width="250" height="56" class="g"/><text x="705" y="238" text-anchor="middle" class="t">MySQL 8.x</text><text x="705" y="255" text-anchor="middle" class="s">tables, triggers, procedures</text>
+<rect x="580" y="320" width="250" height="56" class="g"/><text x="705" y="343" text-anchor="middle" class="t">Redis 7.x</text><text x="705" y="360" text-anchor="middle" class="s">queues and cache</text>
+
+<line x1="155" y1="144" x2="135" y2="215" class="f" marker-end="url(#a)"/>
+<line x1="230" y1="243" x2="280" y2="243" class="f" marker-end="url(#a)"/><text x="238" y="236" class="s">FastCGI</text>
+<line x1="510" y1="236" x2="580" y2="236" class="f" marker-end="url(#a)"/>
+<line x1="510" y1="262" x2="580" y2="335" class="f" marker-end="url(#a)"/>
+<path d="M135,410 L135,420 L760,420 L760,376" class="f" marker-end="url(#a)"/><text x="560" y="414" class="s">scheduled commands queue jobs</text>
+<line x1="580" y1="350" x2="510" y2="350" class="f" marker-end="url(#a)"/><text x="516" y="344" class="s">pull jobs</text>
+<line x1="510" y1="320" x2="580" y2="262" class="f" marker-end="url(#a)"/>
+<path d="M725,67 L725,150 L705,150 L705,215" class="d" marker-end="url(#a)"/>
+<text x="735" y="110" class="s">readings via device</text><text x="735" y="124" class="s">data-collection service</text><text x="735" y="138" class="s">(outside this repository)</text>
+
+<!-- external -->
+<text x="440" y="458" text-anchor="middle" class="s">outbound HTTPS calls from the application and workers</text>
+<line x1="395" y1="410" x2="395" y2="470" class="f" marker-end="url(#a)"/>
+<rect x="20" y="480" width="155" height="50" class="n"/><text x="97" y="502" text-anchor="middle" class="t">Firebase FCM</text><text x="97" y="518" text-anchor="middle" class="s">push</text>
+<rect x="190" y="480" width="155" height="50" class="n"/><text x="267" y="502" text-anchor="middle" class="t">Twilio</text><text x="267" y="518" text-anchor="middle" class="s">WhatsApp, OTP</text>
+<rect x="360" y="480" width="155" height="50" class="n"/><text x="437" y="502" text-anchor="middle" class="t">Zoho Mail</text><text x="437" y="518" text-anchor="middle" class="s">email</text>
+<rect x="530" y="480" width="155" height="50" class="n"/><text x="607" y="502" text-anchor="middle" class="t">Tomorrow.io</text><text x="607" y="518" text-anchor="middle" class="s">weather</text>
+<rect x="700" y="480" width="160" height="50" class="n"/><text x="780" y="502" text-anchor="middle" class="t">Google Maps</text><text x="780" y="518" text-anchor="middle" class="s">Static API</text>
+<line x1="20" y1="470" x2="860" y2="470" class="f"/>
+</svg>

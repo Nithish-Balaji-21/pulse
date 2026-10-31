@@ -1,0 +1,5 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:DejaVu Sans,sans-serif;font-size:11px;color:#17233b}h1{color:#83211b}p{margin:4px 0}th{text-align:left}tr{page-break-inside:avoid}</style></head><body>
+<h1>Expense Report &middot; Alam Cocos</h1><p>{{ $from }} &ndash; {{ $to }} &middot; {{ $timezone }} &middot; Category: {{ ucfirst($category) }}</p>
+<p>Staff: INR {{ number_format($report['totals']['staff'],0) }} &middot; Vehicles &amp; materials: INR {{ number_format($report['totals']['other'],0) }} &middot; Total: INR {{ number_format($report['totals']['total'],0) }}</p><br><p>Activity wages (included in staff expense): INR {{ number_format($activityWages,0) }}</p><br>
+@include('pulse::expenses.report-table')
+<p>Includes charges paid by or billed to Alam Cocos. Staff costs are grouped by task for the selected period.</p></body></html>

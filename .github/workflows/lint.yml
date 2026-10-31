@@ -1,0 +1,82 @@
+name: Lint
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master, develop]
+    paths:
+      - '**.php'
+      - 'pint.json'
+      - '.github/workflows/lint.yml'
+  pull_request:
+    paths:
+      - '**.php'
+      - 'pint.json'
+      - '.github/workflows/lint.yml'
+
+# A newer push to the same branch cancels the run still in flight.
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pint:
+    timeout-minutes: 10
+    name: Pint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+          tools: composer:v2
+
+      - name: Cache Composer packages
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ runner.os }}-php8.5-${{ hashFiles('composer.lock') }}
+          restore-keys: composer-${{ runner.os }}-php8.5-
+
+      # --no-scripts skips artisan package:discover, which would need an .env
+      # and an APP_KEY. Pint is a standalone binary and needs neither.
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist --no-scripts
+
+      - name: Check formatting
+        run: vendor/bin/pint --test
+
+  profanity:
+    if: github.event_name == 'workflow_dispatch'
+    timeout-minutes: 10
+    name: Profanity check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+          tools: composer:v2
+
+      - name: Cache Composer packages
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ runner.os }}-php8.5-${{ hashFiles('composer.lock') }}
+          restore-keys: composer-${{ runner.os }}-php8.5-
+
+      # --no-scripts skips artisan package:discover, which would need an .env
+      # and an APP_KEY. The profanity scan is a static file scan and needs neither.
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist --no-scripts
+
+      - name: Scan application code for profanity
+        run: composer test:profanity

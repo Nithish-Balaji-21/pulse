@@ -1,0 +1,1 @@
+<img src="{{ asset('images/logo-color.png') }}" alt="CoiioT" style="width:260px; height:auto;" />

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 790" width="900" height="790">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;font-size:12px;fill:#000}
+.uc{fill:#f4f4f4;stroke:#000;stroke-width:1.1}
+.ln{stroke:#000;stroke-width:1;fill:none}
+.act{stroke:#000;stroke-width:1.4;fill:none}
+.lbl{font-size:12.5px;font-weight:bold}
+.sm{font-size:10.5px;font-style:italic}
+</style>
+<defs>
+<marker id="gen" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto"><path d="M1,1 L11,6 L1,11 Z" fill="#fff" stroke="#000"/></marker>
+<marker id="open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#000"/></marker>
+</defs>
+<rect x="215" y="10" width="470" height="770" fill="none" stroke="#000" stroke-width="1.4"/>
+<text x="450" y="30" text-anchor="middle" class="lbl">Coir Factory Management System</text>
+
+<!-- actor template: head at y-28 -->
+<g id="owner" transform="translate(90,80)"><circle cx="0" cy="-30" r="9" class="act"/><line x1="0" y1="-21" x2="0" y2="4" class="act"/><line x1="-14" y1="-13" x2="14" y2="-13" class="act"/><line x1="0" y1="4" x2="-11" y2="22" class="act"/><line x1="0" y1="4" x2="11" y2="22" class="act"/><text y="38" text-anchor="middle" class="lbl">Owner</text></g>
+<g transform="translate(90,230)"><circle cx="0" cy="-30" r="9" class="act"/><line x1="0" y1="-21" x2="0" y2="4" class="act"/><line x1="-14" y1="-13" x2="14" y2="-13" class="act"/><line x1="0" y1="4" x2="-11" y2="22" class="act"/><line x1="0" y1="4" x2="11" y2="22" class="act"/><text y="38" text-anchor="middle" class="lbl">Admin</text></g>
+<g transform="translate(90,370)"><circle cx="0" cy="-30" r="9" class="act"/><line x1="0" y1="-21" x2="0" y2="4" class="act"/><line x1="-14" y1="-13" x2="14" y2="-13" class="act"/><line x1="0" y1="4" x2="-11" y2="22" class="act"/><line x1="0" y1="4" x2="11" y2="22" class="act"/><text y="38" text-anchor="middle" class="lbl">Supervisor</text></g>
+<g transform="translate(90,520)"><circle cx="0" cy="-30" r="9" class="act"/><line x1="0" y1="-21" x2="0" y2="4" class="act"/><line x1="-14" y1="-13" x2="14" y2="-13" class="act"/><line x1="0" y1="4" x2="-11" y2="22" class="act"/><line x1="0" y1="4" x2="11" y2="22" class="act"/><text y="38" text-anchor="middle" class="lbl">Staff</text></g>
+<g transform="translate(90,690)"><circle cx="0" cy="-30" r="9" class="act"/><line x1="0" y1="-21" x2="0" y2="4" class="act"/><line x1="-14" y1="-13" x2="14" y2="-13" class="act"/><line x1="0" y1="4" x2="-11" y2="22" class="act"/><line x1="0" y1="4" x2="11" y2="22" class="act"/><text y="38" text-anchor="middle" class="lbl">Reader</text></g>
+
+<!-- generalisation: more privileged role specialises the one below -->
+<line x1="90" y1="122" x2="90" y2="186" class="ln" marker-end="url(#gen)"/>
+<line x1="90" y1="272" x2="90" y2="326" class="ln" marker-end="url(#gen)"/>
+<line x1="90" y1="412" x2="90" y2="476" class="ln" marker-end="url(#gen)"/>
+<line x1="90" y1="562" x2="90" y2="646" class="ln" marker-end="url(#gen)"/>
+
+<g transform="translate(810,110)"><circle cx="0" cy="-30" r="9" class="act"/><line x1="0" y1="-21" x2="0" y2="4" class="act"/><line x1="-14" y1="-13" x2="14" y2="-13" class="act"/><line x1="0" y1="4" x2="-11" y2="22" class="act"/><line x1="0" y1="4" x2="11" y2="22" class="act"/><text y="38" text-anchor="middle" class="lbl">Superadmin</text></g>
+<g transform="translate(810,355)"><rect x="-38" y="-38" width="76" height="60" fill="#fff" stroke="#000" stroke-width="1.2"/><text y="-18" text-anchor="middle" class="sm">«system»</text><text y="0" text-anchor="middle" class="lbl">Scheduler</text></g>
+<g transform="translate(810,585)"><rect x="-38" y="-38" width="76" height="60" fill="#fff" stroke="#000" stroke-width="1.2"/><text y="-18" text-anchor="middle" class="sm">«device»</text><text y="0" text-anchor="middle" class="lbl">IoT device</text></g>
+
+<!-- left column use cases (cx=335) -->
+<ellipse cx="335" cy="62" rx="100" ry="20" class="uc"/><text x="335" y="58" text-anchor="middle">Configure factory</text><text x="335" y="72" text-anchor="middle" class="sm">shifts, tariffs, geofences</text>
+<ellipse cx="335" cy="112" rx="100" ry="20" class="uc"/><text x="335" y="116" text-anchor="middle">Manage users and roles</text>
+<ellipse cx="335" cy="205" rx="100" ry="20" class="uc"/><text x="335" y="209" text-anchor="middle">Manage staff and settings</text>
+<ellipse cx="335" cy="255" rx="100" ry="20" class="uc"/><text x="335" y="259" text-anchor="middle">Configure notifications</text>
+<ellipse cx="335" cy="345" rx="100" ry="20" class="uc"/><text x="335" y="349" text-anchor="middle">Record attendance</text>
+<ellipse cx="335" cy="395" rx="100" ry="20" class="uc"/><text x="335" y="399" text-anchor="middle">Close location stock</text>
+<ellipse cx="335" cy="470" rx="100" ry="20" class="uc"/><text x="335" y="474" text-anchor="middle">Record production</text>
+<ellipse cx="335" cy="520" rx="100" ry="20" class="uc"/><text x="335" y="516" text-anchor="middle">Record stock movements</text><text x="335" y="530" text-anchor="middle" class="sm">inward, transfer, watering</text>
+<ellipse cx="335" cy="570" rx="100" ry="20" class="uc"/><text x="335" y="574" text-anchor="middle">Update husk stock</text>
+<ellipse cx="335" cy="650" rx="100" ry="20" class="uc"/><text x="335" y="654" text-anchor="middle">Sign in</text>
+<ellipse cx="335" cy="700" rx="100" ry="20" class="uc"/><text x="335" y="704" text-anchor="middle">View dashboards and IoT insights</text>
+<ellipse cx="335" cy="750" rx="100" ry="20" class="uc"/><text x="335" y="754" text-anchor="middle">Generate reports and exports</text>
+
+<!-- right column use cases (cx=565) -->
+<ellipse cx="565" cy="65" rx="100" ry="20" class="uc"/><text x="565" y="69" text-anchor="middle">Manage factories</text>
+<ellipse cx="565" cy="115" rx="100" ry="20" class="uc"/><text x="565" y="119" text-anchor="middle">Provision IoT devices</text>
+<ellipse cx="565" cy="165" rx="100" ry="20" class="uc"/><text x="565" y="169" text-anchor="middle">Impersonate user (support)</text>
+<ellipse cx="565" cy="305" rx="100" ry="20" class="uc"/><text x="565" y="309" text-anchor="middle">Process device data</text>
+<ellipse cx="565" cy="355" rx="100" ry="20" class="uc"/><text x="565" y="359" text-anchor="middle">Fetch weather forecasts</text>
+<ellipse cx="565" cy="405" rx="100" ry="20" class="uc"/><text x="565" y="409" text-anchor="middle">Send alerts and summaries</text>
+<ellipse cx="565" cy="490" rx="100" ry="20" class="uc"/><text x="565" y="494" text-anchor="middle">Reconcile husk ledger</text>
+<ellipse cx="565" cy="585" rx="100" ry="20" class="uc"/><text x="565" y="589" text-anchor="middle">Report telemetry</text>
+
+<!-- associations: left actors -->
+<line x1="108" y1="62" x2="235" y2="62" class="ln"/><line x1="108" y1="68" x2="235" y2="112" class="ln"/>
+<line x1="108" y1="212" x2="235" y2="205" class="ln"/><line x1="108" y1="218" x2="235" y2="255" class="ln"/>
+<line x1="108" y1="352" x2="235" y2="345" class="ln"/><line x1="108" y1="358" x2="235" y2="395" class="ln"/>
+<line x1="108" y1="500" x2="235" y2="470" class="ln"/><line x1="108" y1="506" x2="235" y2="520" class="ln"/><line x1="108" y1="512" x2="235" y2="568" class="ln"/>
+<line x1="108" y1="670" x2="235" y2="650" class="ln"/><line x1="108" y1="676" x2="235" y2="700" class="ln"/><line x1="108" y1="682" x2="235" y2="748" class="ln"/>
+<!-- associations: right actors -->
+<line x1="792" y1="92" x2="665" y2="66" class="ln"/><line x1="792" y1="98" x2="665" y2="115" class="ln"/><line x1="792" y1="104" x2="665" y2="163" class="ln"/>
+<line x1="772" y1="340" x2="665" y2="307" class="ln"/><line x1="772" y1="347" x2="665" y2="355" class="ln"/><line x1="772" y1="354" x2="665" y2="403" class="ln"/>
+<line x1="772" y1="577" x2="665" y2="585" class="ln"/>
+<!-- include: recording production triggers reconciliation -->
+<line x1="435" y1="474" x2="466" y2="487" class="ln" stroke-dasharray="5,4" marker-end="url(#open)"/>
+<text x="450" y="462" class="sm" text-anchor="middle">«include»</text>
+</svg>

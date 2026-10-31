@@ -1,0 +1,39 @@
+.daterangepicker {
+    font-family: system-ui;
+}
+.daterangepicker th.month {
+    font-weight: 600;
+}
+.daterangepicker .calendar-table th {
+    font-weight: 600;
+}
+.daterangepicker .drp-buttons .btn-primary {
+    font-weight: 600;
+    padding-bottom: 6px;
+    border-radius: 0.25rem;
+    background-color: #3b82f6;
+    color: white;
+    place-content: center;
+}
+.daterangepicker .drp-buttons .btn-primary:hover {
+    background-color: #2563eb;
+}
+.daterangepicker .drp-buttons .btn-default {
+    font-weight: 600;
+    padding-bottom: 6px;
+    border-radius: 0.25rem;
+    background-color: #9ca3af;
+    color: white;
+    place-content: center;
+}
+.daterangepicker .drp-buttons .btn-default:hover {
+    background-color: #6b7280;
+}
+.daterangepicker.show-calendar .ranges {
+    margin-top: 0px;
+    padding-top: 8px;
+    border-right: solid 1px #ddd;
+}
+.daterangepicker.show-ranges.ltr .drp-calendar.left {
+    border-left: none;
+}

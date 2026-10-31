@@ -1,0 +1,43 @@
+/* Labour Attendance Native Table Styling */
+
+/* Slide-in animation for alert messages */
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+}
+
+/* Ensure background colors stay solid during sticky scrolling */
+table th.sticky,
+table td.sticky {
+    box-shadow: 1px 0 0 #e5e7eb;
+}
+
+/* Custom subtle scrollbar */
+.overflow-x-auto::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+    background: #f9fafb;
+    border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}

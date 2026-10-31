@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 900" width="760" height="900">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;font-size:11.5px;fill:#000}
+.ac{fill:#f4f4f4;stroke:#000;stroke-width:1.2}
+.dc{fill:#fff;stroke:#000;stroke-width:1.2}
+.f{stroke:#000;stroke-width:1.1;fill:none}
+.g{font-size:10.5px;font-style:italic}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z"/></marker></defs>
+
+<circle cx="380" cy="20" r="10" fill="#000"/>
+<line x1="380" y1="30" x2="380" y2="48" class="f" marker-end="url(#a)"/>
+<rect x="290" y="48" width="180" height="32" rx="14" class="ac"/><text x="380" y="69" text-anchor="middle">Enter credentials</text>
+<line x1="380" y1="80" x2="380" y2="98" class="f" marker-end="url(#a)"/>
+<polygon points="380,98 440,122 380,146 320,122" class="dc"/><text x="380" y="126" text-anchor="middle">Valid?</text>
+<line x1="440" y1="122" x2="530" y2="122" class="f" marker-end="url(#a)"/><text x="448" y="116" class="g">[no]</text>
+<rect x="530" y="106" width="170" height="32" rx="14" class="ac"/><text x="615" y="127" text-anchor="middle">Show login error</text>
+<path d="M615,106 L615,64 L470,64" class="f" marker-end="url(#a)"/>
+<line x1="380" y1="146" x2="380" y2="166" class="f" marker-end="url(#a)"/><text x="386" y="160" class="g">[yes]</text>
+<rect x="290" y="166" width="180" height="32" rx="14" class="ac"/><text x="380" y="187" text-anchor="middle">Load user and roles</text>
+<line x1="380" y1="198" x2="380" y2="216" class="f" marker-end="url(#a)"/>
+<polygon points="380,216 450,240 380,264 310,240" class="dc"/><text x="380" y="244" text-anchor="middle">Superadmin?</text>
+<line x1="310" y1="240" x2="225" y2="240" class="f" marker-end="url(#a)"/><text x="262" y="234" class="g">[yes]</text>
+<rect x="20" y="214" width="205" height="52" rx="14" class="ac"/><text x="122" y="235" text-anchor="middle">Platform administration</text><text x="122" y="252" text-anchor="middle" class="g">factories, devices, impersonation</text>
+<path d="M122,266 L122,822 L360,822" class="f" marker-end="url(#a)"/>
+<line x1="380" y1="264" x2="380" y2="284" class="f" marker-end="url(#a)"/><text x="386" y="278" class="g">[no]</text>
+<rect x="280" y="284" width="200" height="32" rx="14" class="ac"/><text x="380" y="305" text-anchor="middle">Resolve active factory</text>
+<line x1="380" y1="316" x2="380" y2="334" class="f" marker-end="url(#a)"/>
+<polygon points="380,334 455,358 380,382 305,358" class="dc"/><text x="380" y="362" text-anchor="middle">Member of factory?</text>
+<line x1="455" y1="358" x2="530" y2="358" class="f" marker-end="url(#a)"/><text x="462" y="352" class="g">[no]</text>
+<rect x="530" y="342" width="170" height="32" rx="14" class="ac"/><text x="615" y="363" text-anchor="middle">Deny access (403)</text>
+<path d="M700,358 L730,358 L730,822 L400,822" class="f" marker-end="url(#a)"/>
+<line x1="380" y1="382" x2="380" y2="402" class="f" marker-end="url(#a)"/><text x="386" y="396" class="g">[yes]</text>
+<rect x="265" y="402" width="230" height="32" rx="14" class="ac"/><text x="380" y="423" text-anchor="middle">Show modules the role may use</text>
+<line x1="380" y1="434" x2="380" y2="452" class="f" marker-end="url(#a)"/>
+<rect x="255" y="452" width="250" height="32" rx="14" class="ac"/><text x="380" y="473" text-anchor="middle">Choose action: create / edit / delete</text>
+<line x1="380" y1="484" x2="380" y2="502" class="f" marker-end="url(#a)"/>
+<polygon points="380,502 455,526 380,550 305,526" class="dc"/><text x="380" y="530" text-anchor="middle">Gate allows it?</text>
+<line x1="455" y1="526" x2="530" y2="526" class="f" marker-end="url(#a)"/><text x="462" y="520" class="g">[no]</text>
+<rect x="530" y="510" width="170" height="32" rx="14" class="ac"/><text x="615" y="531" text-anchor="middle">Refuse and show message</text>
+<line x1="700" y1="526" x2="730" y2="526" class="f"/>
+<line x1="380" y1="550" x2="380" y2="570" class="f" marker-end="url(#a)"/><text x="386" y="564" class="g">[yes]</text>
+<rect x="290" y="570" width="180" height="32" rx="14" class="ac"/><text x="380" y="591" text-anchor="middle">Validate input</text>
+<line x1="380" y1="602" x2="380" y2="620" class="f" marker-end="url(#a)"/>
+<polygon points="380,620 440,644 380,668 320,644" class="dc"/><text x="380" y="648" text-anchor="middle">Valid?</text>
+<line x1="440" y1="644" x2="530" y2="644" class="f" marker-end="url(#a)"/><text x="448" y="638" class="g">[no]</text>
+<rect x="530" y="628" width="170" height="32" rx="14" class="ac"/><text x="615" y="649" text-anchor="middle">Show field errors</text>
+<path d="M615,628 L615,586 L470,586" class="f" marker-end="url(#a)"/>
+<line x1="380" y1="668" x2="380" y2="688" class="f" marker-end="url(#a)"/><text x="386" y="682" class="g">[yes]</text>
+<rect x="250" y="688" width="260" height="48" rx="14" class="ac"/><text x="380" y="708" text-anchor="middle">Save record</text><text x="380" y="725" text-anchor="middle" class="g">pith production: trigger reconciles husk ledger</text>
+<line x1="380" y1="736" x2="380" y2="754" class="f" marker-end="url(#a)"/>
+<rect x="290" y="754" width="180" height="32" rx="14" class="ac"/><text x="380" y="775" text-anchor="middle">Show confirmation</text>
+<line x1="380" y1="786" x2="380" y2="808" class="f" marker-end="url(#a)"/>
+<polygon points="380,808 396,822 380,836 364,822" class="dc"/>
+<line x1="380" y1="836" x2="380" y2="852" class="f" marker-end="url(#a)"/>
+<rect x="270" y="852" width="220" height="30" rx="14" class="ac"/><text x="380" y="872" text-anchor="middle">Log out, invalidate session</text>
+<circle cx="510" cy="867" r="10" fill="#fff" stroke="#000" stroke-width="1.5"/><circle cx="510" cy="867" r="6" fill="#000"/>
+<line x1="490" y1="867" x2="500" y2="867" class="f"/>
+</svg>

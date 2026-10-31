@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;font-size:11.5px;fill:#000}
+.hd{fill:#f0f0f0;stroke:#000;stroke-width:1.2}
+.ll{stroke:#000;stroke-width:1;stroke-dasharray:5,4}
+.m{stroke:#000;stroke-width:1.1;fill:none}
+.r{stroke:#000;stroke-width:1.1;fill:none;stroke-dasharray:6,4}
+.act{fill:#fff;stroke:#000;stroke-width:1}
+.frm{fill:none;stroke:#000;stroke-width:1.1}
+.b{font-weight:bold}
+.s{font-size:10.5px}
+</style>
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z"/></marker>
+<marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#000"/></marker>
+</defs>
+<!-- lifeline heads -->
+<g><circle cx="70" cy="18" r="8" fill="none" stroke="#000"/><line x1="70" y1="26" x2="70" y2="44" stroke="#000"/><line x1="58" y1="32" x2="82" y2="32" stroke="#000"/><line x1="70" y1="44" x2="61" y2="56" stroke="#000"/><line x1="70" y1="44" x2="79" y2="56" stroke="#000"/><text x="70" y="72" text-anchor="middle" class="b">Supervisor</text></g>
+<rect x="160" y="40" width="130" height="40" class="hd"/><text x="225" y="58" text-anchor="middle" class="b">Livewire page</text><text x="225" y="72" text-anchor="middle" class="s">pith production form</text>
+<rect x="320" y="40" width="130" height="40" class="hd"/><text x="385" y="58" text-anchor="middle" class="b">Middleware</text><text x="385" y="72" text-anchor="middle" class="s">auth + active team</text>
+<rect x="480" y="40" width="120" height="40" class="hd"/><text x="540" y="58" text-anchor="middle" class="b">Gate</text><text x="540" y="72" text-anchor="middle" class="s">role permissions</text>
+<rect x="630" y="40" width="110" height="40" class="hd"/><text x="685" y="64" text-anchor="middle" class="b">MySQL</text>
+<rect x="765" y="40" width="125" height="40" class="hd"/><text x="827" y="58" text-anchor="middle" class="b">Trigger and</text><text x="827" y="72" text-anchor="middle" class="s">reconcile_husks_stock</text>
+<line x1="70" y1="80" x2="70" y2="625" class="ll"/>
+<line x1="225" y1="80" x2="225" y2="625" class="ll"/>
+<line x1="385" y1="80" x2="385" y2="625" class="ll"/>
+<line x1="540" y1="80" x2="540" y2="625" class="ll"/>
+<line x1="685" y1="80" x2="685" y2="625" class="ll"/>
+<line x1="827" y1="80" x2="827" y2="625" class="ll"/>
+
+<line x1="70" y1="110" x2="225" y2="110" class="m" marker-end="url(#a)"/><text x="78" y="104">1: submit shift, CFT</text>
+<line x1="225" y1="140" x2="385" y2="140" class="m" marker-end="url(#a)"/><text x="232" y="134">2: request (session)</text>
+<path d="M385,160 l30,0 l0,16 l-28,0" class="m" marker-end="url(#a)"/><text x="420" y="168" class="s">3: authenticate,</text><text x="420" y="181" class="s">verify factory member</text>
+<line x1="385" y1="192" x2="225" y2="192" class="r" marker-end="url(#o)"/><text x="290" y="187" class="s">passed</text><line x1="225" y1="210" x2="540" y2="210" class="m" marker-end="url(#a)"/><text x="232" y="205">4: can create pith production?</text>
+
+<rect x="20" y="222" width="850" height="392" class="frm"/>
+<path d="M20,222 L72,222 L72,236 L64,244 L20,244 Z" fill="#fff" stroke="#000"/><text x="28" y="238" class="b">alt</text>
+<text x="80" y="238" class="s">[permission granted]</text>
+<line x1="540" y1="262" x2="225" y2="262" class="r" marker-end="url(#o)"/><text x="300" y="256">5: yes</text>
+<path d="M225,280 l30,0 l0,16 l-28,0" class="m" marker-end="url(#a)"/><text x="260" y="292" class="s">6: validate input</text>
+<line x1="225" y1="320" x2="685" y2="320" class="m" marker-end="url(#a)"/><text x="232" y="314">7: insert or update pulse_summary_pith_productions</text>
+<line x1="685" y1="350" x2="827" y2="350" class="m" marker-end="url(#a)"/><text x="692" y="344" class="s">8: AFTER trigger</text>
+<path d="M827,370 l30,0 l0,16 l-28,0" class="m" marker-end="url(#a)"/><text x="700" y="400" class="s">9: CALL reconcile_husks_stock</text><text x="700" y="413" class="s">(team, shift date)</text>
+<line x1="827" y1="430" x2="685" y2="430" class="m" marker-end="url(#a)"/><text x="694" y="446" class="s">10: update ledger rows</text><text x="694" y="459" class="s">from that date onward</text>
+<line x1="685" y1="480" x2="225" y2="480" class="r" marker-end="url(#o)"/><text x="400" y="474">11: saved</text>
+<line x1="225" y1="510" x2="70" y2="510" class="r" marker-end="url(#o)"/><text x="80" y="504">12: confirmation, totals</text>
+<line x1="20" y1="552" x2="870" y2="552" class="frm" stroke-dasharray="6,4"/>
+<text x="80" y="568" class="s">[permission refused]</text>
+<line x1="540" y1="585" x2="225" y2="585" class="r" marker-end="url(#o)"/><text x="300" y="579">5': no</text>
+<line x1="225" y1="602" x2="70" y2="602" class="r" marker-end="url(#o)"/><text x="80" y="597">6': error message, nothing saved</text>
+</svg>

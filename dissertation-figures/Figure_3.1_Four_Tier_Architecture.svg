@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 640" width="940" height="640">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;font-size:11.5px;fill:#000}
+.tier{fill:#fafafa;stroke:#000;stroke-width:1;stroke-dasharray:6,4}
+.bx{fill:#fff;stroke:#000;stroke-width:1.2}
+.db{fill:#ececec;stroke:#000;stroke-width:1.2}
+.t{font-weight:bold;font-size:12px}
+.s{font-size:10.5px}
+.tl{font-weight:bold;font-size:12px}
+.ar{stroke:#000;stroke-width:1.2;fill:none}
+.da{stroke:#000;stroke-width:1.2;fill:none;stroke-dasharray:5,4}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z"/></marker></defs>
+
+<!-- Tier bands -->
+<rect x="10" y="10" width="880" height="105" class="tier"/>
+<rect x="10" y="135" width="880" height="150" class="tier"/>
+<rect x="10" y="305" width="880" height="150" class="tier"/>
+<rect x="10" y="475" width="880" height="155" class="tier"/>
+<text x="22" y="30" class="tl">1. Client tier</text>
+<text x="22" y="155" class="tl">2. Presentation and API tier</text>
+<text x="22" y="325" class="tl">3. Business logic and processing tier</text>
+<text x="22" y="495" class="tl">4. Storage and integration tier</text>
+
+<!-- Tier 1 -->
+<rect x="60" y="42" width="200" height="58" class="bx"/><text x="160" y="64" text-anchor="middle" class="t">Web browser</text><text x="160" y="82" text-anchor="middle" class="s">desktop, tablet, phone</text>
+<rect x="330" y="42" width="200" height="58" class="bx"/><text x="430" y="64" text-anchor="middle" class="t">Mobile app</text><text x="430" y="82" text-anchor="middle" class="s">JSON API, Sanctum token</text>
+<rect x="640" y="42" width="220" height="58" class="bx"/><text x="750" y="62" text-anchor="middle" class="t">IoT devices and meters</text><text x="750" y="78" text-anchor="middle" class="s">pulse counters, current/voltage,</text><text x="750" y="92" text-anchor="middle" class="s">water meters, tank sensors</text>
+
+<!-- Tier 2 -->
+<rect x="60" y="170" width="140" height="44" class="bx"/><text x="130" y="190" text-anchor="middle" class="t">Cloudflare</text><text x="130" y="205" text-anchor="middle" class="s">proxy (trusted IPs)</text>
+<rect x="225" y="170" width="120" height="44" class="bx"/><text x="285" y="190" text-anchor="middle" class="t">Nginx</text><text x="285" y="205" text-anchor="middle" class="s">HTTPS, PHP-FPM</text>
+<rect x="370" y="160" width="140" height="30" class="bx"/><text x="440" y="180" text-anchor="middle">web routes</text>
+<rect x="370" y="198" width="140" height="30" class="bx"/><text x="440" y="218" text-anchor="middle">api routes</text>
+<rect x="535" y="158" width="335" height="72" class="bx"/><text x="702" y="176" text-anchor="middle" class="t">Middleware chain (in order)</text>
+<text x="702" y="195" text-anchor="middle" class="s">1. authenticate: session (web) / auth:sanctum (API)</text>
+<text x="702" y="210" text-anchor="middle" class="s">2. active factory: VerifyCurrentTeam / active-team check</text>
+<text x="702" y="225" text-anchor="middle" class="s">3. permission gates, e.g. can:view-pith-inventory</text>
+<rect x="225" y="240" width="285" height="34" class="bx"/><text x="367" y="261" text-anchor="middle">Blade views and Livewire components (HTML)</text>
+<rect x="535" y="240" width="335" height="34" class="bx"/><text x="702" y="261" text-anchor="middle">JSON responses to the mobile app</text>
+
+<!-- Tier 3 -->
+<rect x="60" y="340" width="190" height="100" class="bx"/><text x="155" y="362" text-anchor="middle" class="t">Controllers and</text><text x="155" y="377" text-anchor="middle" class="t">Livewire components</text><text x="155" y="398" text-anchor="middle" class="s">production, inventory,</text><text x="155" y="412" text-anchor="middle" class="s">attendance, reports,</text><text x="155" y="426" text-anchor="middle" class="s">settings</text>
+<rect x="270" y="340" width="200" height="100" class="bx"/><text x="370" y="362" text-anchor="middle" class="t">Domain services</text><text x="370" y="382" text-anchor="middle" class="s">ProductionCounter</text><text x="370" y="396" text-anchor="middle" class="s">CounterSeed</text><text x="370" y="410" text-anchor="middle" class="s">DefibreStateClassifier</text><text x="370" y="424" text-anchor="middle" class="s">CoirDryingAdvisor</text>
+<rect x="490" y="340" width="185" height="100" class="bx"/><text x="582" y="362" text-anchor="middle" class="t">Scheduled commands</text><text x="582" y="382" text-anchor="middle" class="s">devicedata:pith / fibre /</text><text x="582" y="396" text-anchor="middle" class="s">growbags / others</text><text x="582" y="410" text-anchor="middle" class="s">husks:daily-stock, weather:*</text><text x="582" y="424" text-anchor="middle" class="s">machine and tank monitors</text>
+<rect x="695" y="340" width="175" height="100" class="bx"/><text x="782" y="362" text-anchor="middle" class="t">Queued jobs</text><text x="782" y="382" text-anchor="middle" class="s">per-team processing jobs,</text><text x="782" y="396" text-anchor="middle" class="s">notifications, exports</text><text x="782" y="414" text-anchor="middle" class="s">run by Horizon workers</text>
+
+<!-- Tier 4 -->
+<rect x="60" y="510" width="280" height="105" class="db"/><text x="200" y="532" text-anchor="middle" class="t">MySQL 8</text><text x="200" y="552" text-anchor="middle" class="s">team-scoped tables (team_id)</text><text x="200" y="567" text-anchor="middle" class="s">device-data and summary tables</text><text x="200" y="582" text-anchor="middle" class="s">triggers + reconcile_husks_stock</text><text x="200" y="597" text-anchor="middle" class="s">husk ledger, yard inventory</text>
+<rect x="360" y="510" width="150" height="105" class="db"/><text x="435" y="532" text-anchor="middle" class="t">Redis 7</text><text x="435" y="555" text-anchor="middle" class="s">job queues</text><text x="435" y="570" text-anchor="middle" class="s">cache</text>
+<rect x="530" y="510" width="340" height="105" class="bx"/><text x="700" y="530" text-anchor="middle" class="t">External services</text>
+<text x="545" y="552" class="s">Firebase Cloud Messaging - push</text><text x="545" y="568" class="s">Twilio - WhatsApp messages and OTP</text><text x="545" y="584" class="s">Zoho Mail - transactional email</text><text x="545" y="600" class="s">Tomorrow.io - weather; Google Maps Static API - site maps</text>
+
+<!-- Arrows -->
+<path d="M160,100 L130,170" class="ar" marker-end="url(#a)"/>
+<path d="M430,100 L150,170" class="ar" marker-end="url(#a)"/>
+<line x1="200" y1="192" x2="225" y2="192" class="ar" marker-end="url(#a)"/>
+<line x1="345" y1="186" x2="370" y2="176" class="ar" marker-end="url(#a)"/>
+<line x1="345" y1="198" x2="370" y2="212" class="ar" marker-end="url(#a)"/>
+<line x1="510" y1="176" x2="535" y2="180" class="ar" marker-end="url(#a)"/>
+<line x1="510" y1="212" x2="535" y2="208" class="ar" marker-end="url(#a)"/>
+<line x1="600" y1="230" x2="250" y2="340" class="ar" marker-end="url(#a)"/>
+<line x1="155" y1="340" x2="300" y2="274" class="ar" marker-end="url(#a)"/>
+<line x1="250" y1="390" x2="270" y2="390" class="ar" marker-end="url(#a)"/>
+<line x1="490" y1="390" x2="470" y2="390" class="ar" marker-end="url(#a)"/>
+<line x1="675" y1="390" x2="695" y2="390" class="ar" marker-end="url(#a)"/>
+<line x1="155" y1="440" x2="170" y2="510" class="ar" marker-end="url(#a)"/>
+<line x1="370" y1="440" x2="240" y2="510" class="ar" marker-end="url(#a)"/>
+<line x1="582" y1="440" x2="300" y2="510" class="ar" marker-end="url(#a)"/>
+<line x1="740" y1="440" x2="470" y2="510" class="ar" marker-end="url(#a)"/>
+<line x1="800" y1="440" x2="760" y2="510" class="ar" marker-end="url(#a)"/>
+<!-- device readings path: outside this application -->
+<path d="M860,71 L908,71 L908,465 L345,465 L330,510" class="da" marker-end="url(#a)"/>
+<text x="922" y="268" class="s" transform="rotate(90 922 268)" text-anchor="middle">readings every 20 s via device data-collection service (outside this repository)</text>
+</svg>

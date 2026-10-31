@@ -1,0 +1,16 @@
+# Replace /actual/project, www-data and /usr/bin/php for your server before installation.
+[Unit]
+Description=Coiiot Nightwatch agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/actual/project
+ExecStart=/usr/bin/php artisan nightwatch:agent
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

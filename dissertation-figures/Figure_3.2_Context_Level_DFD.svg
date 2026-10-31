@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;font-size:11.5px;fill:#000}
+.en{fill:#fff;stroke:#000;stroke-width:1.4}
+.pr{fill:#f0f0f0;stroke:#000;stroke-width:1.6}
+.t{font-weight:bold;font-size:12.5px}
+.s{font-size:10.5px}
+.f{stroke:#000;stroke-width:1.2;fill:none}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z"/></marker></defs>
+
+<circle cx="450" cy="250" r="105" class="pr"/>
+<text x="450" y="228" text-anchor="middle" class="t">0</text>
+<text x="450" y="248" text-anchor="middle" class="t">Coir Factory</text>
+<text x="450" y="264" text-anchor="middle" class="t">Management System</text>
+
+<rect x="20" y="40" width="190" height="64" class="en"/><text x="115" y="66" text-anchor="middle" class="t">Factory users</text><text x="115" y="84" text-anchor="middle" class="s">Owner, Admin, Supervisor,</text><text x="115" y="97" text-anchor="middle" class="s">Staff, Reader</text>
+<rect x="20" y="218" width="190" height="64" class="en"/><text x="115" y="246" text-anchor="middle" class="t">Superadmin</text><text x="115" y="263" text-anchor="middle" class="s">platform administrator</text>
+<rect x="20" y="396" width="190" height="64" class="en"/><text x="115" y="422" text-anchor="middle" class="t">Field staff</text><text x="115" y="439" text-anchor="middle" class="s">mobile app</text>
+<rect x="355" y="10" width="190" height="56" class="en"/><text x="450" y="34" text-anchor="middle" class="t">IoT devices</text><text x="450" y="51" text-anchor="middle" class="s">counters, meters, tank sensors</text>
+<rect x="690" y="40" width="190" height="64" class="en"/><text x="785" y="68" text-anchor="middle" class="t">Tomorrow.io</text><text x="785" y="85" text-anchor="middle" class="s">weather forecasts</text>
+<rect x="690" y="218" width="190" height="64" class="en"/><text x="785" y="244" text-anchor="middle" class="t">Messaging services</text><text x="785" y="261" text-anchor="middle" class="s">FCM, Twilio, Zoho Mail</text>
+<rect x="690" y="396" width="190" height="64" class="en"/><text x="785" y="424" text-anchor="middle" class="t">Google Maps</text><text x="785" y="441" text-anchor="middle" class="s">Static API</text>
+
+<!-- factory users -->
+<path d="M210,62 L368,175" class="f" marker-end="url(#a)"/>
+<text x="232" y="100" class="s" transform="rotate(35 232 100)">production, stock, attendance</text>
+<path d="M352,200 L210,92" class="f" marker-end="url(#a)"/>
+<text x="230" y="130" class="s" transform="rotate(37 230 130)">dashboards, reports, exports</text>
+<!-- superadmin -->
+<line x1="210" y1="240" x2="345" y2="240" class="f" marker-end="url(#a)"/>
+<text x="218" y="233" class="s">factories, devices, support</text>
+<line x1="345" y1="262" x2="210" y2="262" class="f" marker-end="url(#a)"/>
+<text x="218" y="277" class="s">system health, error alerts</text>
+<!-- field staff -->
+<path d="M210,420 L372,320" class="f" marker-end="url(#a)"/>
+<text x="232" y="396" class="s" transform="rotate(-32 232 396)">geofence enter/exit events</text>
+<path d="M360,305 L210,400" class="f" marker-end="url(#a)"/>
+<text x="250" y="360" class="s" transform="rotate(-32 250 360)">assigned geofences, push</text>
+<!-- IoT -->
+<line x1="450" y1="66" x2="450" y2="145" class="f" marker-end="url(#a)"/>
+<text x="458" y="110" class="s">counter, current, voltage,</text><text x="458" y="124" class="s">water and tank readings</text>
+<!-- weather -->
+<path d="M690,80 L536,190" class="f" marker-end="url(#a)"/>
+<text x="560" y="140" class="s" transform="rotate(-36 560 140)">hourly / daily forecast</text>
+<!-- messaging -->
+<line x1="555" y1="250" x2="690" y2="250" class="f" marker-end="url(#a)"/>
+<text x="562" y="243" class="s">alerts, OTPs, summaries</text>
+<!-- maps -->
+<path d="M528,320 L690,420" class="f" marker-end="url(#a)"/>
+<text x="560" y="356" class="s" transform="rotate(32 560 356)">map request</text>
+<path d="M690,440 L520,335" class="f" marker-end="url(#a)"/>
+<text x="580" y="412" class="s" transform="rotate(32 580 412)">site map image</text>
+</svg>

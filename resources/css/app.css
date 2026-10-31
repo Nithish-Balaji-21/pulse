@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+
+/* Preserve Tailwind v3 default ring color (blue-500/50) for ring utilities without an explicit color */
+@theme {
+    --default-ring-color: rgb(59 130 246 / 0.5);
+}
+
+/* Figtree (self-hosted, @font-face in public/css/fonts.css) ahead of Tailwind's default system stack */
+@theme {
+    --font-sans: Figtree, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* Preserve Tailwind v3 default border color (gray-200) for border utilities without an explicit color */
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+/* Preserve Tailwind v3 behavior: buttons and button-like elements show a hand pointer */
+@layer base {
+    button:not(:disabled),
+    [role="button"]:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
+/* Slightly darker grey text steps than the Tailwind default for better legibility
+   (lightness lowered ~5 points; 50-300 left untouched so backgrounds/borders stay light) */
+@theme {
+    --color-gray-400: oklch(66% 0.022 261.325);
+    --color-gray-500: oklch(50% 0.027 264.364);
+    --color-gray-600: oklch(40% 0.03 256.802);
+    --color-gray-700: oklch(33% 0.034 259.733);
+}
+
+[x-cloak] {
+    display: none;
+}

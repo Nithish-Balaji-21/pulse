@@ -1,0 +1,16 @@
+; Replace /actual/project, www-data and /usr/bin/php for your server.
+; Uses the app's configured default QUEUE_CONNECTION (must support asynchronous queues).
+[program:coiiot-compilation-alerts]
+process_name=%(program_name)s
+command=/usr/bin/php /actual/project/artisan queue:work --queue=compilation-alerts --sleep=3 --tries=3 --timeout=60
+directory=/actual/project
+user=www-data
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+redirect_stderr=true
+stdout_logfile=/actual/project/storage/logs/compilation-alert-worker.log
+stdout_logfile_maxbytes=10MB
+stdout_logfile_backups=3
+stopwaitsecs=90

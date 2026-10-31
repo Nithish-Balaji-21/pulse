@@ -1,0 +1,31 @@
+site_name: CoiioT Documentation
+dev_addr: '127.0.0.1:8001'
+theme:
+  name: material
+  features:
+    - content.code.annotate
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+  - pymdownx.details
+nav:
+  - Home: index.md
+  - Architecture: Architecture.md
+  - IoT Data Handling: IoT-Data-Handling.md
+  - Technical Workflow: Technical-Workflow.md
+  - RBAC: RBAC.md
+  - IoT Modules:
+      - Water: iot/water.md
+      - Fibre: iot/fibre.md
+      - Pith: iot/pith.md

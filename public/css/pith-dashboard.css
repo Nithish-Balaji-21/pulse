@@ -1,0 +1,85 @@
+/* :root {
+    --expected-color: #3B82F6;
+    --actual-color: #28a745;
+    --closingstock-color: #F44336;
+    --eb-units-color: #F44336;
+} */
+.apexcharts-canvas {
+    padding-left: 8px;
+}
+.apexcharts-datalabel {
+    transform: translateY(-10px);
+}
+.tooltipExpenses {
+    font-size: 12px;
+    padding: 8px;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.apexcharts-legend-text {
+    width: 100%;
+}
+.legend-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.legend-label {
+    width: 70%;
+    text-align: left;
+}
+.legend-value {
+    width: 30%;
+    text-align: right;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+.legend-content-device-state{
+    width: 160px;
+}
+.apexcharts-canvas {
+    padding-left: 0;
+}
+/* .expected-color {
+    background-color: #3B82F6;
+}
+.actual-color {
+    background-color: #28a745;
+}
+.closingstock-color,
+.eb-units-color {
+    background-color: #F44336;
+}
+.text-expected-color {
+    color: #3B82F6;
+}
+.text-actual-color {
+    color: #28a745;
+}
+.text-closingstock-color,
+.text-eb-units-color {
+    color: #ea580c;
+} */
+
+/* Summary card number sizes */
+.summary-card-number {
+    font-size: 1.125rem; /* ~text-lg */
+    line-height: 1.1;
+}
+.pith-number {
+    font-size: 1.125rem; /* match summary-card-number (text-lg) */
+}
+
+/* Ensure Pith Loads card has no hover or transition effects */
+.pith-load-card {
+    cursor: default !important;
+    transition: none !important;
+}
+.pith-load-card:hover,
+.pith-load-card:focus {
+    box-shadow: none !important;
+    transform: none !important;
+}

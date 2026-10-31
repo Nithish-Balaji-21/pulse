@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;font-size:11.5px;fill:#000}
+.en{fill:#fff;stroke:#000;stroke-width:1.4}
+.pr{fill:#f0f0f0;stroke:#000;stroke-width:1.4}
+.ds{fill:#fff;stroke:#000;stroke-width:1.2}
+.t{font-weight:bold;font-size:12px}
+.s{font-size:10.5px}
+.f{stroke:#000;stroke-width:1.1;fill:none}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z"/></marker></defs>
+
+<!-- external entities -->
+<rect x="15" y="30" width="120" height="48" class="en"/><text x="75" y="58" text-anchor="middle" class="t">IoT devices</text>
+<rect x="15" y="300" width="120" height="48" class="en"/><text x="75" y="321" text-anchor="middle" class="t">Factory</text><text x="75" y="337" text-anchor="middle" class="t">users</text>
+<rect x="15" y="520" width="120" height="48" class="en"/><text x="75" y="548" text-anchor="middle" class="t">Tomorrow.io</text>
+<rect x="765" y="560" width="120" height="48" class="en"/><text x="825" y="581" text-anchor="middle" class="t">Messaging</text><text x="825" y="597" text-anchor="middle" class="s">FCM, Twilio, email</text>
+
+<!-- processes: rounded rectangles with number band -->
+<g><rect x="200" y="20" width="170" height="70" rx="10" class="pr"/><line x1="200" y1="42" x2="370" y2="42" stroke="#000"/><text x="285" y="36" text-anchor="middle" class="t">1.0</text><text x="285" y="60" text-anchor="middle">Receive readings and</text><text x="285" y="76" text-anchor="middle">mark duplicates</text></g>
+<g><rect x="430" y="140" width="190" height="78" rx="10" class="pr"/><line x1="430" y1="162" x2="620" y2="162" stroke="#000"/><text x="525" y="156" text-anchor="middle" class="t">2.0</text><text x="525" y="180" text-anchor="middle">Production processing</text><text x="525" y="196" text-anchor="middle" class="s">counter walk, seeds, entries</text></g>
+<g><rect x="200" y="380" width="190" height="78" rx="10" class="pr"/><line x1="200" y1="402" x2="390" y2="402" stroke="#000"/><text x="295" y="396" text-anchor="middle" class="t">3.0</text><text x="295" y="420" text-anchor="middle">Inventory and husk</text><text x="295" y="436" text-anchor="middle" class="s">reconciliation (DB triggers)</text></g>
+<g><rect x="200" y="510" width="190" height="70" rx="10" class="pr"/><line x1="200" y1="532" x2="390" y2="532" stroke="#000"/><text x="295" y="526" text-anchor="middle" class="t">4.0</text><text x="295" y="550" text-anchor="middle">Weather and drying</text><text x="295" y="566" text-anchor="middle">analysis</text></g>
+<g><rect x="640" y="370" width="200" height="88" rx="10" class="pr"/><line x1="640" y1="392" x2="840" y2="392" stroke="#000"/><text x="740" y="386" text-anchor="middle" class="t">5.0</text><text x="740" y="410" text-anchor="middle">Reporting, monitoring</text><text x="740" y="426" text-anchor="middle">and notification</text><text x="740" y="444" text-anchor="middle" class="s">dashboards, exports, alerts</text></g>
+
+<!-- data stores: open-ended boxes -->
+<g><path d="M440,30 L640,30 M440,72 L640,72 M440,30 L440,72 M470,30 L470,72" class="ds"/><text x="455" y="56" text-anchor="middle" class="t">D1</text><text x="555" y="49" text-anchor="middle">Device data</text><text x="555" y="64" text-anchor="middle" class="s">pulse_device_data*</text></g>
+<g><path d="M690,140 L880,140 M690,182 L880,182 M690,140 L690,182 M720,140 L720,182" class="ds"/><text x="705" y="166" text-anchor="middle" class="t">D2</text><text x="800" y="159" text-anchor="middle">Devices, shifts, settings</text><text x="800" y="174" text-anchor="middle" class="s">thresholds, HUSKS_PER_LOAD</text></g>
+<g><path d="M430,270 L650,270 M430,312 L650,312 M430,270 L430,312 M460,270 L460,312" class="ds"/><text x="445" y="296" text-anchor="middle" class="t">D3</text><text x="555" y="289" text-anchor="middle">Production summaries</text><text x="555" y="304" text-anchor="middle" class="s">pulse_summary_*, power states</text></g>
+<g><path d="M430,410 L610,410 M430,452 L610,452 M430,410 L430,452 M460,410 L460,452" class="ds"/><text x="445" y="436" text-anchor="middle" class="t">D4</text><text x="535" y="429" text-anchor="middle">Inventory</text><text x="535" y="444" text-anchor="middle" class="s">husk ledger, pith yards</text></g>
+<g><path d="M430,525 L610,525 M430,567 L610,567 M430,525 L430,567 M460,525 L460,567" class="ds"/><text x="445" y="551" text-anchor="middle" class="t">D5</text><text x="535" y="544" text-anchor="middle">Weather data</text><text x="535" y="559" text-anchor="middle" class="s">hourly and daily rows</text></g>
+
+<!-- flows -->
+<line x1="135" y1="54" x2="200" y2="54" class="f" marker-end="url(#a)"/><text x="140" y="46" class="s">readings</text>
+<line x1="370" y1="51" x2="440" y2="51" class="f" marker-end="url(#a)"/><text x="378" y="44" class="s">stored rows</text>
+<path d="M540,72 L540,140" class="f" marker-end="url(#a)"/><text x="546" y="112" class="s">non-duplicate readings</text>
+<path d="M690,161 L620,169" class="f" marker-end="url(#a)"/><text x="630" y="152" class="s">shift times</text>
+<path d="M525,218 L525,270" class="f" marker-end="url(#a)"/><text x="531" y="250" class="s">shift summaries</text>
+<path d="M135,306 L430,196" class="f" marker-end="url(#a)"/><text x="190" y="270" class="s" transform="rotate(-20 190 270)">confirmed production (CFT)</text>
+<path d="M120,348 L215,380" class="f" marker-end="url(#a)"/><text x="40" y="372" class="s">husks received,</text><text x="40" y="385" class="s">yard movements</text>
+<path d="M470,312 L360,380" class="f" marker-end="url(#a)"/><text x="330" y="352" class="s">change on pith row (trigger)</text>
+<path d="M390,420 L430,420" class="f" marker-end="url(#a)"/>
+<path d="M430,444 L390,444" class="f" marker-end="url(#a)"/><text x="395" y="470" class="s">balances</text>
+<path d="M135,544 L200,544" class="f" marker-end="url(#a)"/><text x="140" y="536" class="s">forecast</text>
+<line x1="390" y1="546" x2="430" y2="546" class="f" marker-end="url(#a)"/>
+<path d="M650,291 L700,370" class="f" marker-end="url(#a)"/>
+<path d="M610,431 L640,414" class="f" marker-end="url(#a)"/>
+<path d="M610,546 L680,458" class="f" marker-end="url(#a)"/>
+<path d="M690,458 L690,620 L165,620 L165,345 L137,338" class="f" marker-end="url(#a)"/>
+<text x="420" y="614" class="s">dashboards, reports, exports</text>
+<line x1="800" y1="458" x2="815" y2="560" class="f" marker-end="url(#a)"/><text x="812" y="515" class="s">alerts</text>
+</svg>
